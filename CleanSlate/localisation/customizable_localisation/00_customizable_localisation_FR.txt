@@ -814,7 +814,6 @@ defined_text = {
 	}
 }
 
-
 ## ELISIONS
 
 defined_text = {
@@ -1134,7 +1133,7 @@ defined_text = { #2018.10.01
 							}
 						}
 						trigger_else = {
-							tier = COUNT
+							real_tier = COUNT
 
 							OR = {
 								culture_group = dravidian_group # Thikana
@@ -1158,7 +1157,7 @@ defined_text = { #2018.10.01
 							religion_group = muslim # Cheikat
 						}
 						trigger_else = {
-							tier = BARON # Temple, Vahram, Khalwat
+							real_tier = BARON # Temple, Vahram, Khalwat
 
 							NOR = {
 								religion_group = christian # Évêché
@@ -1514,7 +1513,7 @@ defined_text = { # 2018.10.01
 							}
 						}
 						trigger_else_if = {
-							limit = { tier = KING } # Royaume, Khanat, Sultanat
+							limit = { real_tier = KING } # Royaume, Khanat, Sultanat
 							NOT = { culture = saxon } # Grande chefferie
 						}
 						trigger_else_if = {
@@ -1551,7 +1550,7 @@ defined_text = { # 2018.10.01
 							religion_group = muslim # Cheikat
 						}
 						trigger_else = {
-							tier = BARON # Temple, Vahram, Khalwat
+							real_tier = BARON # Temple, Vahram, Khalwat
 
 							NOR = {
 								religion_group = christian # Évêché
@@ -1932,7 +1931,7 @@ defined_text = { #2018.10.01
 							}
 						}
 						trigger_else_if = {
-							limit = { tier = KING } # Royaume, Khanat, Sultanat
+							limit = { real_tier = KING } # Royaume, Khanat, Sultanat
 							NOT = { culture = saxon } # Grande chefferie
 						}
 						trigger_else_if = {
@@ -1969,7 +1968,7 @@ defined_text = { #2018.10.01
 							religion_group = muslim # Cheikat
 						}
 						trigger_else = {
-							tier = BARON # Temple, Vahram, Khalwat
+							real_tier = BARON # Temple, Vahram, Khalwat
 
 							NOR = {
 								religion_group = christian # Évêché
@@ -2325,7 +2324,7 @@ defined_text = { #2018.10.01
 							}
 						}
 						trigger_else_if = {
-							limit = { tier = KING } # Royaume, Khanat, Sultanat
+							limit = { real_tier = KING } # Royaume, Khanat, Sultanat
 							NOT = { culture = saxon } # Grande chefferie
 						}
 						trigger_else_if = {
@@ -2362,7 +2361,7 @@ defined_text = { #2018.10.01
 							religion_group = muslim # Cheikat
 						}
 						trigger_else = {
-							tier = BARON # Temple, Vahram, Khalwat
+							real_tier = BARON # Temple, Vahram, Khalwat
 
 							NOR = {
 								religion_group = christian # Évêché
@@ -15001,7 +15000,6 @@ defined_text = {
 		localisation_key = String_FR_FALLBACK_GetGovernmentMasc
 	}
 }
-
 
 ## CUSTOM ENGLISH COMMANDS WITH ARTICLE OR GENDER
 

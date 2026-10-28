@@ -1064,7 +1064,7 @@ e_italia = {
 
 			catalan = "Còrsega"
 			french = "Corse"
-			greek = "Korsikn"
+			greek = "Korsike"
 
 			c_corsica = {
 				color = { 226 248 251 }
@@ -1171,7 +1171,6 @@ e_italia = {
 			c_ogliastra = {
 				color = { 169 195 170 }
 				color2 = { 255 255 255 }
-
 
 				b_ogliastra = {}
 				b_muravera = {

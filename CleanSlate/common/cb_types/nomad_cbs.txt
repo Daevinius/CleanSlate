@@ -45,7 +45,6 @@ cb_install_khan = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -188,7 +187,7 @@ nomad_dispute = {
 	}
 
 	can_use_title = {
-		tier = COUNT
+		real_tier = COUNT
 		holder = FROM
 
 		location = {
@@ -205,7 +204,6 @@ nomad_dispute = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -402,7 +400,6 @@ cb_liberate_nomad_duchy = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -439,8 +436,6 @@ cb_liberate_nomad_duchy = {
 	}
 
 	on_success_title = {
-		check_holy_order_donation_effect = yes
-
 		custom_tooltip = {
 			text = liberate_nomad_cb_succ_tip
 
@@ -520,33 +515,7 @@ cb_liberate_nomad_duchy = {
 		factor = 1
 
 		trigger = {
-			trigger_if = {
-				limit = {
-					ROOT = {
-						is_tribal = no
-					}
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-						}
-					}
-				}
-			}
-			trigger_else = {
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-							holding_type = tribal
-						}
-					}
-				}
-			}
+			suitable_holdings_trigger = yes
 		}
 
 		coronation_factor = yes
@@ -594,7 +563,6 @@ cb_minor_clan_revolt = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -740,12 +708,12 @@ nomad_subjugation = {
 
 	can_use_gui = {
 		trigger_if = {
-			limit = { ROOT = { lower_tier_than = EMPEROR } }
+			limit = { ROOT = { lower_real_tier_than = EMPEROR } }
 
 			FROM = {
 				show_scope_change = no
 
-				lower_tier_than = EMPEROR
+				lower_real_tier_than = EMPEROR
 			}
 		}
 
@@ -864,7 +832,6 @@ nomad_subjugation = {
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1005,14 +972,6 @@ nomad_subjugation = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -1069,7 +1028,6 @@ nomad_subjugation = {
 
 			participation_scaled_prestige = 100
 			piety = 100
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -1102,19 +1060,7 @@ nomad_subjugation = {
 				num_of_count_titles_in_realm >= 5
 			}
 
-			trigger_if = {
-				limit = {
-					ROOT = {
-						has_character_flag = is_temujin
-						has_landed_title = e_mongol_empire
-						is_landed = yes
-					}
-				}
-
-				FROM = {
-					NOT = { has_landed_title = e_china_west_governor }
-				}
-			}
+			temujin_avoid_china_trigger = yes
 		}
 	}
 }
@@ -1165,12 +1111,10 @@ nomad_invasion = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
@@ -1181,7 +1125,6 @@ nomad_invasion = {
 			prestige = -100
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1326,14 +1269,6 @@ nomad_invasion = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -1409,7 +1344,6 @@ nomad_invasion = {
 
 			prestige = 200
 			participation_scaled_prestige = 200
-			roman_victory_triumph_effect = yes
 
 			hidden_effect = {
 				random_list = {
@@ -1474,161 +1408,11 @@ nomad_invasion = {
 		factor = 7.2 # Prefer using CB's without on_add costs
 
 		trigger = {
-			# This ensures that the AI doesn't declare this type of war against someone who only holds a few counties within the targeted title...
-			trigger_if = {
-				limit = {
-					ROOT = {
-						NOT = { has_landed_title = e_mongol_empire }
-					}
-				}
-
-				# Defender
-				FROM = {
-					num_of_realm_counties = {
-						value >= 5
-						title = PREV
-					}
-				}
-			}
-
-			trigger_if = {
-				limit = {
-					ROOT = {
-						has_character_flag = is_temujin
-						has_landed_title = e_mongol_empire
-						is_landed = yes
-					}
-				}
-
-				FROM = {
-					NOT = { has_landed_title = e_china_west_governor }
-				}
-			}
+			defender_controls_enough_land_trigger = yes
+			temujin_avoid_china_trigger = yes
 		}
 
-		# Try to guide the Hordes in the right direction
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				OR = {
-					dynasty = 613 # Seljuks
-					dynasty = 800 # Timurids
-
-					primary_title = {
-						title = e_ilkhanate
-					}
-				}
-			}
-
-			OR = {
-				empire = {
-					NOR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				defender = {
-					primary_title = {
-						title = e_golden_horde
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				primary_title = {
-					title = e_golden_horde
-				}
-			}
-
-			OR = {
-				empire = {
-					NOR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				defender = {
-					primary_title = {
-						title = e_ilkhanate
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				culture = hungarian
-
-				primary_title = {
-					OR = {
-						title = k_hungary
-						title = e_carpathia
-					}
-				}
-			}
-
-			empire = {
-				OR = {
-					title = e_tartaria
-					title = e_rus
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 100
-
-			attacker = {
-				primary_title = {
-					title = e_mongol_empire
-				}
-			}
-
-			empire = {
-				OR = {
-					title = e_tartaria
-					title = e_turan
-					title = e_pontic_steppe
-					title = e_volga-ural
-					title = e_rus
-					title = e_persia
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				primary_title = {
-					title = e_mongol_empire
-				}
-			}
-
-			empire = {
-				OR = {
-					title = e_tibet
-					title = e_rajastan
-					title = e_bengal
-					title = e_deccan
-				}
-			}
-		}
+		horde_guidance_factor = yes
 	}
 }
 
@@ -1743,7 +1527,6 @@ nomad_expansion = {
 			prestige = -300
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1856,14 +1639,6 @@ nomad_expansion = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -1931,100 +1706,10 @@ nomad_expansion = {
 		factor = 2
 
 		trigger = {
-			trigger_if = {
-				limit = {
-					ROOT = {
-						has_character_flag = is_temujin
-						has_landed_title = e_mongol_empire
-						is_landed = yes
-					}
-				}
-
-				FROM = {
-					NOT = { has_landed_title = e_china_west_governor }
-				}
-			}
+			temujin_avoid_china_trigger = yes
 		}
 
-		# Try to guide the Hordes in the right direction
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				OR = {
-					dynasty = 613 # Seljuks
-					dynasty = 800 # Timurids
-
-					primary_title = {
-						title = e_ilkhanate
-					}
-				}
-			}
-
-			OR = {
-				empire = {
-					NOR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				FROM = {
-					primary_title = {
-						title = e_golden_horde
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				primary_title = {
-					title = e_golden_horde
-				}
-			}
-
-			OR = {
-				empire = {
-					OR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				FROM = {
-					primary_title = {
-						title = e_ilkhanate
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 2.0
-
-			OR = {
-				culture = persian
-				culture = baloch
-				culture = afghan
-				culture = turkish
-			}
-
-			empire = {
-				OR = {
-					title = e_persia
-					title = e_rajastan
-				}
-			}
-		}
+		horde_guidance_factor = yes
 	}
 }
 
@@ -2114,7 +1799,6 @@ nomad_humiliate_cb = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 

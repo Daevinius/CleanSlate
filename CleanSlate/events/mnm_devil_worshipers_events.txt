@@ -2142,7 +2142,6 @@ character_event = {
 	}
 }
 
-
 ### POWERS ###
 
 # Power: Corrupt a priest
@@ -3511,7 +3510,6 @@ character_event = {
 	}
 }
 
-
 ## Power: Demonic Healing ##
 
 # Demonic Healing opening #
@@ -4005,7 +4003,6 @@ character_event = {
 	}
 }
 
-
 ## Induction ##
 
 # Opening Event
@@ -4320,7 +4317,6 @@ character_event = {
 	}
 }
 
-
 ## Power: Dark Divorce
 
 # Dark Divorce spellcasting event
@@ -4612,7 +4608,6 @@ character_event = {
 	}
 }
 
-
 # Power: Summon familiar
 character_event = {
 	id = MNM.7815
@@ -4705,7 +4700,6 @@ character_event = {
 		}
 	}
 }
-
 
 # Power: Tainted touch
 character_event = {
@@ -4919,7 +4913,6 @@ character_event = {
 		}
 	}
 }
-
 
 # Power: invite witch to court
 character_event = {
@@ -5277,7 +5270,6 @@ character_event = {
 	}
 }
 
-
 ## Sacrifice prisoner events
 
 # Head of Religion or Holy man
@@ -5375,7 +5367,6 @@ long_character_event = {
 		name = MNM.7506.a
 	}
 }
-
 
 # Power: Demonic impregnation
 character_event = {
@@ -5532,7 +5523,6 @@ character_event = {
 	}
 }
 
-
 # Power: Prolong life sacrifice
 character_event = {
 	id = MNM.7509
@@ -5601,7 +5591,6 @@ character_event = {
 		}
 	}
 }
-
 
 ## DW Mission Tombola
 character_event = {
@@ -6194,7 +6183,6 @@ character_event = {
 	}
 }
 
-
 # Finds holy relics, steal or destroy
 character_event = {
 	id = MNM.7116
@@ -6422,7 +6410,6 @@ character_event = {
 	}
 }
 
-
 # MISSION: Corrupt a priest
 # We want you to corrupt this priest!
 society_quest_event = {
@@ -6458,13 +6445,13 @@ society_quest_event = {
 
 			preferred_limit = {
 				ROOT = { society_rank >= 3 }
-				higher_tier_than = BARON
+				higher_real_tier_than = BARON
 			}
 
 			preferred_limit = {
 				ROOT = { society_rank >= 2 }
-				higher_tier_than = BARON
-				lower_tier_than = KING
+				higher_real_tier_than = BARON
+				lower_real_tier_than = KING
 			}
 
 			save_event_target_as = corrupt_priest_mission_target
@@ -6499,7 +6486,6 @@ society_quest_event = {
 		ai_chance = { factor = 0 }
 	}
 }
-
 
 # MISSION: Sacrifice character
 ## For the character that gets the mission Sacrifice someone
@@ -6555,7 +6541,6 @@ society_quest_event = {
 	}
 }
 
-
 # MISSION: Demonic impregnation
 ## For the character that gets the mission Demonic Impregnation
 society_quest_event = {
@@ -6585,7 +6570,6 @@ society_quest_event = {
 		ai_chance = { factor = 0 }
 	}
 }
-
 
 # MISSION: Demonic posesssion
 ## For the character that gets the mission Demonic Possession
@@ -8167,39 +8151,6 @@ character_event = {
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_intrigue
 	portrait = event_target:satanic_reveler
-
-	desc = {
-		text = EVTDESC_MNM_20021
-		trigger = {
-			NOR = {
-				has_character_flag = nt_rivalry
-				society_member_of = the_bacchants
-			}
-		}
-	}
-	desc = {
-		text = EVTDESC_MNM_20021_RIVALRY
-		trigger = {
-			has_character_flag = nt_rivalry
-			NOT = { society_member_of = the_bacchants }
-		}
-	}
-	desc = {
-		text = EVTDESC_MNM_20021_B
-		picture = GFX_evt_magic_ritual
-		trigger = {
-			NOT = { has_character_flag = nt_rivalry }
-			society_member_of = the_bacchants
-		}
-	}
-	desc = {
-		text = EVTDESC_MNM_20021_RIVALRY_B
-		picture = GFX_evt_magic_ritual
-		trigger = {
-			has_character_flag = nt_rivalry
-			society_member_of = the_bacchants
-		}
-	}
 
 	is_triggered_only = yes
 

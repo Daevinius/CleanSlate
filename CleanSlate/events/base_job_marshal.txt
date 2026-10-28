@@ -16,7 +16,6 @@ namespace = marshal
 #
 ##############################
 
-
 ##############################
 # MARSHAL
 # JOB: action_advance_mil_tech
@@ -142,7 +141,6 @@ letter_event = {
 	}
 }
 
-
 # 939: Military Secrets Revealed!
 character_event = {
 	id = marshal.101
@@ -197,7 +195,7 @@ character_event = {
 
 		mult_modifier = {
 			factor = 2
-			has_religion_feature = religion_dogmatic
+			religion_is_dogmatic_trigger = yes
 		}
 	}
 
@@ -342,7 +340,6 @@ letter_event = {
 		}
 	}
 }
-
 
 ##############################
 # MARSHAL

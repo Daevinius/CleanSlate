@@ -1194,120 +1194,6 @@ character_event = {
 	}
 }
 
-# After diplomacy action conversion
-character_event = {
-	id = RoI.120
-
-	is_triggered_only = yes # on_vassal_accepts_religious_conversion via event 39700, base_religious_events.txt
-	hide_window = yes
-
-	immediate = {
-		FROMFROMFROM = {
-			trigger_switch = {
-				on_trigger = trait
-
-				shaivist_hindu     = { ROOT = { add_trait = shaivist_hindu } }
-				vaishnavist_hindu  = { ROOT = { add_trait = vaishnavist_hindu } }
-				shaktist_hindu     = { ROOT = { add_trait = shaktist_hindu } }
-				smartist_hindu     = { ROOT = { add_trait = smartist_hindu } }
-				mahayana_buddhist  = { ROOT = { add_trait = mahayana_buddhist } }
-				vajrayana_buddhist = { ROOT = { add_trait = vajrayana_buddhist } }
-				theravada_buddhist = { ROOT = { add_trait = theravada_buddhist } }
-				digambara_jain     = { ROOT = { add_trait = digambara_jain } }
-				svetambara_jain    = { ROOT = { add_trait = svetambara_jain } }
-			}
-		}
-	}
-}
-
-# After conversion, set religious branch randomly
-character_event = {
-	id = RoI.30120
-
-	is_triggered_only = yes # SoA.4020, soa_heresy_events.txt
-	hide_window = yes
-
-	immediate = {
-		if = {
-			limit = { religion = hindu }
-
-			random_list = {
-				25 = { add_trait = shaivist_hindu }
-				25 = { add_trait = vaishnavist_hindu }
-				25 = { add_trait = shaktist_hindu }
-				25 = { add_trait = smartist_hindu }
-			}
-		}
-		else_if = {
-			limit = { religion = buddhist }
-
-			random_list = {
-				33 = { add_trait = mahayana_buddhist }
-				33 = { add_trait = vajrayana_buddhist }
-				33 = { add_trait = theravada_buddhist }
-			}
-		}
-		else = {
-			random_list = {
-				50 = { add_trait = digambara_jain }
-				50 = { add_trait = svetambara_jain }
-			}
-		}
-	}
-}
-
-# After conversion, set religious branch to liege's branch
-character_event = {
-	id = RoI.30121
-
-	is_triggered_only = yes # numerous events
-	hide_window = yes
-
-	immediate = {
-		liege = {
-			trigger_switch = {
-				on_trigger = trait
-
-				shaivist_hindu     = { ROOT = { add_trait = shaivist_hindu } }
-				vaishnavist_hindu  = { ROOT = { add_trait = vaishnavist_hindu } }
-				shaktist_hindu     = { ROOT = { add_trait = shaktist_hindu } }
-				smartist_hindu     = { ROOT = { add_trait = smartist_hindu } }
-				mahayana_buddhist  = { ROOT = { add_trait = mahayana_buddhist } }
-				vajrayana_buddhist = { ROOT = { add_trait = vajrayana_buddhist } }
-				theravada_buddhist = { ROOT = { add_trait = theravada_buddhist } }
-				digambara_jain     = { ROOT = { add_trait = digambara_jain } }
-				svetambara_jain    = { ROOT = { add_trait = svetambara_jain } }
-			}
-		}
-	}
-}
-
-# After conversion, set religious branch to FROM's branch
-character_event = {
-	id = RoI.30122
-
-	is_triggered_only = yes # SoA.4031, soa_heresy_events.txt
-	hide_window = yes
-
-	immediate = {
-		FROM = {
-			trigger_switch = {
-				on_trigger = trait
-
-				shaivist_hindu     = { ROOT = { add_trait = shaivist_hindu } }
-				vaishnavist_hindu  = { ROOT = { add_trait = vaishnavist_hindu } }
-				shaktist_hindu     = { ROOT = { add_trait = shaktist_hindu } }
-				smartist_hindu     = { ROOT = { add_trait = smartist_hindu } }
-				mahayana_buddhist  = { ROOT = { add_trait = mahayana_buddhist } }
-				vajrayana_buddhist = { ROOT = { add_trait = vajrayana_buddhist } }
-				theravada_buddhist = { ROOT = { add_trait = theravada_buddhist } }
-				digambara_jain     = { ROOT = { add_trait = digambara_jain } }
-				svetambara_jain    = { ROOT = { add_trait = svetambara_jain } }
-			}
-		}
-	}
-}
-
 ###########################################
 # Reincarnation Events
 ###########################################
@@ -3587,7 +3473,6 @@ character_event = {
 # The White Elephant                      #
 ###########################################
 
-
 # White elephant is offered as a gift
 character_event = {
 	id = RoI.164
@@ -4221,7 +4106,6 @@ character_event = {
 	}
 }
 
-
 # Arrives and sees yogi
 character_event = {
 	id = RoI.194
@@ -4371,7 +4255,7 @@ character_event = {
 
 	trigger = {
 		capital_scope = {
-			region = world_persia
+			region = world_middle_east_persia
 		}
 
 		is_alternate_start = no
@@ -4932,7 +4816,6 @@ character_event = {
 			trigger = { has_character_modifier = patron_ganga }
 		}
 
-
 		scaled_wealth = -0.3
 		piety = 30
 
@@ -4941,7 +4824,6 @@ character_event = {
 			years = 4
 		}
 	}
-
 
 	option = {
 		name = EVTOPTH_RoI_410
@@ -5544,7 +5426,7 @@ character_event = {
 
 	trigger = {
 		FROM = {
-			tier = COUNT
+			real_tier = COUNT
 
 			location = {
 				has_province_modifier = temple_corruption
@@ -5572,7 +5454,7 @@ character_event = {
 
 	trigger = {
 		FROM = {
-			tier = COUNT
+			real_tier = COUNT
 
 			location = {
 				has_province_modifier = local_death_cult

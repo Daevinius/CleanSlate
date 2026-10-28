@@ -116,12 +116,10 @@ crusade = {
 	}
 
 	can_use_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 6
-				title = PREV
-			}
+		# Defender must have at least 6 counties within the target kingdom
+		num_title_realm_provs = {
+			value >= 6
+			who = FROM
 		}
 	}
 
@@ -147,17 +145,14 @@ crusade = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -388,14 +383,6 @@ crusade = {
 				years = 20
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -431,8 +418,6 @@ crusade = {
 			}
 
 			hidden_effect = {
-				roman_victory_triumph_effect = yes
-
 				if = {
 					limit = { can_apply_cool_nickname_trigger = yes }
 
@@ -520,8 +505,6 @@ crusade = {
 			}
 
 			hidden_effect = {
-				roman_victory_triumph_effect = yes
-
 				if = {
 					limit = { can_apply_cool_nickname_trigger = yes }
 
@@ -673,26 +656,27 @@ new_crusade = {
 	}
 
 	can_use_title = {
-		# Defender
-		FROM = {
-			trigger_if = {
-				limit = {
+		trigger_if = {
+			limit = {
+				FROM = {
 					has_landed_title = e_byzantium
 					religion_group = christian
 				}
 
-				PREV = { title = k_thrace }
-
-				num_of_realm_counties = {
-					value >= 1
-					title = PREV
-				}
+				title = k_thrace
 			}
-			trigger_else = {
-				num_of_realm_counties = {
-					value >= 6
-					title = PREV
-				}
+
+			# Defender must have at least 1 county within the target kingdom
+			num_title_realm_provs = {
+				value >= 1
+				who = FROM
+			}
+		}
+		trigger_else = {
+			# Defender must have at least 6 counties within the target kingdom
+			num_title_realm_provs = {
+				value >= 6
+				who = FROM
 			}
 		}
 	}
@@ -731,17 +715,14 @@ new_crusade = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1404,9 +1385,9 @@ new_crusade = {
 						}
 					}
 
-					# Existing kings only keep their de jure vassals
 					e_byzantium = {
 						holder_scope = {
+							# Existing kings only keep their de jure vassals
 							any_vassal = {
 								limit = {
 									real_tier = KING
@@ -1427,12 +1408,8 @@ new_crusade = {
 									set_defacto_liege = PREVPREV
 								}
 							}
-						}
-					}
 
-					# Find a King for Trebizond
-					e_byzantium = {
-						holder_scope = {
+							# Find a King for Trebizond
 							if = {
 								limit = {
 									k_trebizond = {
@@ -1453,29 +1430,17 @@ new_crusade = {
 									}
 
 									grant_title_no_opinion = k_trebizond
+									save_event_target_as = trebizond
 								}
 							}
 
-						}
-					}
-
-					# Set vassals for Trebizond
-					k_trebizond = {
-						holder_scope = {
-							e_byzantium = {
-								holder_scope = {
-									any_vassal = {
-										limit = { primary_title = { de_jure_liege_or_above = k_trebizond } }
-										set_defacto_liege = PREVPREVPREV
-									}
-								}
+							# Set vassals for Trebizond
+							any_vassal = {
+								limit = { primary_title = { de_jure_liege_or_above = k_trebizond } }
+								set_defacto_liege = event_target:trebizond
 							}
-						}
-					}
 
-					# Find random vassal and make a king out of them
-					e_byzantium = {
-						holder_scope = {
+							# Find random vassal and make a king out of them
 							random_vassal = {
 								limit = {
 									real_tier = DUKE
@@ -1506,12 +1471,9 @@ new_crusade = {
 									}
 								}
 							}
-						}
-					}
 
-					# All Byzantine vassals go independent except those neighboring the old Emperor, and he/she gets an inferior Empire title while the Byzantine title is broken
-					e_byzantium = {
-						holder_scope = {
+							# All Byzantine vassals go independent except those neighboring the old Emperor,
+							# and he/she gets an inferior Empire title while the Byzantine title is broken
 							any_vassal = {
 								limit = {
 									higher_real_tier_than = BARON
@@ -1873,14 +1835,6 @@ new_crusade = {
 				character_event = { id = HFP.41199 }
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -1933,8 +1887,6 @@ new_crusade = {
 						}
 					}
 				}
-
-				roman_victory_triumph_effect = yes
 			}
 		}
 	}
@@ -2024,8 +1976,6 @@ new_crusade = {
 						}
 					}
 				}
-
-				roman_victory_triumph_effect = yes
 			}
 		}
 
@@ -2137,6 +2087,22 @@ religious = {
 				piety >= 100
 			}
 		}
+
+		FROM = {
+			trigger_if = {
+				limit = {
+					religion_group = muslim
+					religion_group = ROOT
+				}
+
+				# Not fighting religious enemies
+				NOT = {
+					any_current_enemy = {
+						NOT = { religion_group = muslim }
+					}
+				}
+			}
+		}
 	}
 
 	can_use = {
@@ -2150,7 +2116,7 @@ religious = {
 
 			trigger_if = {
 				limit = { religion_group = indian_group }
-				NOT = { religion = taoist }
+				has_dharmic_religion_trigger = yes
 			}
 			trigger_else_if = {
 				limit = { religion_group = pagan_group }
@@ -2180,29 +2146,19 @@ religious = {
 
 					# Dharmics can fight Taoists
 					trigger_if = {
-						limit = {
-							religion_group = indian_group # Not strictly necessary, but I like the consistency
-							has_dharmic_religion_trigger = yes
-						}
+						limit = { religion_group = indian_group }
 						FROM = { religion = taoist }
 					}
 
 					# Muslims fight amongst themselves
 					trigger_else_if = {
 						limit = { religion_group = muslim }
-						NOR = {
-							religion = FROM
-							FROM = { # Not fighting religious enemies
-								any_current_enemy = {
-									NOT = { religion_group = muslim }
-								}
-							}
-						}
+						NOT = {	religion = FROM	}
 					}
 
 					# Pagans also fight amongst themselves
 					trigger_else_if = {
-						limit = { religion_group = pagan }
+						limit = { religion_group = pagan_group }
 						NOT = { religion = FROM }
 					}
 				}
@@ -2228,22 +2184,21 @@ religious = {
 				top_liege = {
 					religion_group = ROOT
 
-					# Religion must match, or neither is a heretic
+					# Religion must match, or neither is a heretic of the other
 					trigger_if = {
 						limit = {
 							NOT = { religion = ROOT }
 						}
 
 						NOR = {
-							religion_group = pagan_group
-							is_heretic = yes
-							ROOT = { is_heretic = yes }
+							is_heresy_of = ROOT
+							is_parent_religion = ROOT
 						}
 					}
 
-					# Can holy war known devil worshippers of top liege's religion
+					# Can holy war known devil worshippers of top liege's religion group
 					trigger_if = {
-						limit = { religion = FROM }
+						limit = { religion_group = FROM }
 
 						FROM = { has_character_modifier = known_satanist }
 						NOT = { has_character_modifier = known_satanist }
@@ -2251,6 +2206,12 @@ religious = {
 						ROOT = {
 							NOT = { has_character_modifier = known_satanist }
 						}
+					}
+
+					# Can't attack outside of your liege's pagan branch
+					trigger_else_if = {
+						limit = { religion_group = pagan_group }
+						religion = ROOT
 					}
 				}
 			}
@@ -2347,6 +2308,10 @@ religious = {
 			NOT = { same_realm = FROM }
 
 			trigger_if = {
+				limit = { religion_group = indian_group }
+				has_dharmic_religion_trigger = yes
+			}
+			trigger_else_if = {
 				limit = { religion_group = pagan_group }
 
 				OR = {
@@ -2354,8 +2319,6 @@ religious = {
 					religion = aztec_pagan
 				}
 			}
-
-			pacifist = no
 
 			# Requirements for holy war in same religion group
 			trigger_if = {
@@ -2365,9 +2328,17 @@ religious = {
 					is_heresy_of = FROM
 					is_parent_religion = FROM
 
+					# Can holy war known demon worshippers in the same religion group
+					trigger_if = {
+						limit = {
+							NOT = { has_character_modifier = known_satanist }
+						}
+						FROM = { has_character_modifier = known_satanist }
+					}
+
 					# Dharmics can fight Taoists
 					trigger_if = {
-						limit = { has_dharmic_religion_trigger = yes }
+						limit = { religion_group = indian_group }
 						FROM = { religion = taoist }
 					}
 
@@ -2377,23 +2348,48 @@ religious = {
 						NOT = { religion = FROM }
 					}
 
-					# Can holy war known demon worshippers in the same religion group
-					AND = {
-						FROM = { has_character_modifier = known_satanist }
-						NOT = { has_character_modifier = known_satanist }
+					# Pagans also fight amongst themselves
+					trigger_else_if = {
+						limit = { religion_group = pagan_group }
+						NOT = { religion = FROM }
 					}
 				}
 			}
 
-			top_liege = {
-				trigger_if = {
-					limit = { religion = FROM }
+			trigger_if = {
+				limit = { independent = no }
 
-					FROM = { has_character_modifier = known_satanist }
-					NOT = { has_character_modifier = known_satanist }
+				top_liege = {
+					religion_group = ROOT
 
-					ROOT = {
+					# Religion must match, or neither is a heretic of the other
+					trigger_if = {
+						limit = {
+							NOT = { religion = ROOT }
+						}
+
+						NOR = {
+							is_heresy_of = ROOT
+							is_parent_religion = ROOT
+						}
+					}
+
+					# Can holy war known devil worshippers of top liege's religion group
+					trigger_if = {
+						limit = { religion_group = FROM }
+
+						FROM = { has_character_modifier = known_satanist }
 						NOT = { has_character_modifier = known_satanist }
+
+						ROOT = {
+							NOT = { has_character_modifier = known_satanist }
+						}
+					}
+
+					# Can't attack outside of your liege's pagan branch
+					trigger_else_if = {
+						limit = { religion_group = pagan_group }
+						religion = ROOT
 					}
 				}
 			}
@@ -2414,7 +2410,6 @@ religious = {
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -2551,14 +2546,6 @@ religious = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_war_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -2676,159 +2663,15 @@ religious = {
 		factor = 1
 
 		trigger = {
-			trigger_if = {
-				limit = {
-					ROOT = {
-						is_tribal = yes
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-							holding_type = tribal
-						}
-					}
-				}
-			}
-			trigger_else_if = {
-				limit = {
-					ROOT = {
-						is_nomadic = no
-						is_tribal = no
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-						}
-					}
-				}
-			}
+			suitable_holdings_trigger = yes
 		}
 
 		coronation_factor = yes
+		horde_guidance_factor = yes
 
 		mult_modifier = { # Prefer using CB's without on_add costs
 			factor = 0.9
-
-			attacker = { religion_group = pagan_group }
-		}
-
-		# Try to guide the Hordes in the right direction
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				OR = {
-					dynasty = 613 # Seljuks
-					dynasty = 800 # Timurids
-
-					primary_title = {
-						title = e_ilkhanate
-					}
-				}
-			}
-
-			OR = {
-				empire = {
-					NOR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				defender = {
-					primary_title = {
-						title = e_golden_horde
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			attacker = {
-				primary_title = {
-					title = e_golden_horde
-				}
-			}
-
-			OR = {
-				empire = {
-					OR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				defender = {
-					primary_title = {
-						title = e_ilkhanate
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 2.0
-
-			OR = {
-				culture = persian
-				culture = baloch
-				culture = afghan
-				culture = turkish
-			}
-
-			empire = {
-				OR = {
-					title = e_persia
-					title = e_rajastan
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				culture = hungarian
-
-				primary_title = {
-					OR = {
-						title = k_hungary
-						title = e_carpathia
-					}
-				}
-			}
-
-			empire = {
-				OR = {
-					title = e_tartaria
-					title = e_rus
-				}
-			}
+			ROOT = { religion_group = pagan_group }
 		}
 	}
 }
@@ -2903,7 +2746,9 @@ liberate_religion = {
 		}
 
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
-		any_direct_de_jure_vassal_title = {
+		any_de_jure_vassal_title = {
+			real_tier = COUNT
+
 			trigger_if = {
 				limit = {
 					holder_scope = {
@@ -2913,12 +2758,12 @@ liberate_religion = {
 						}
 					}
 				}
-			}
 
-			holder_scope = {
-				OR = { # Actually part of Defender's realm, not a random title in the same de jure duchy
-					character = FROM
-					is_vassal_or_below_of = FROM
+				holder_scope = {
+					OR = { # Actually part of Defender's realm, not a random title in the same de jure duchy
+						character = FROM
+						is_vassal_or_below_of = FROM
+					}
 				}
 			}
 
@@ -2936,6 +2781,24 @@ liberate_religion = {
 					}
 					trigger_else = {
 						is_land = no # first sea zone
+
+						OR = { # religion requirements for attack across sea zones
+							ROOT = { religion_group = muslim }
+							FROM = { religion_group = muslim }
+
+							trigger_if = {
+								limit = { ROOT = { religion_group = pagan_group } }
+								has_global_flag = pagan_ghws_unlocked
+							}
+							trigger_else_if = {
+								limit = { ROOT = { religion_group = christian } }
+								has_global_flag = christian_crusades_unlocked
+							}
+							trigger_else = {
+								ROOT = { religion_group = muslim }
+								has_global_flag = muslim_jihads_unlocked
+							}
+						}
 
 						any_neighbor_province = {
 							trigger_if = {
@@ -2984,34 +2847,29 @@ liberate_religion = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
 	on_add = {
 		attacker = {
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = {
-							any_owned_bloodline = {
-								has_bloodline_flag = bloodline_religious_liberation
-								bloodline_is_active_for = PREV
-							}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_bloodline = {
+							has_bloodline_flag = bloodline_religious_liberation
+							bloodline_is_active_for = PREV
 						}
 					}
-
-					set_character_flag = used_liberate_opportunity
 				}
+
+				set_character_flag = used_liberate_opportunity
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -3176,7 +3034,7 @@ liberate_religion = {
 				event_target:new_ruler = {
 					any_demesne_title = {
 						limit = {
-							tier = KING
+							real_tier = KING
 							is_primary_holder_title = no
 						}
 
@@ -3199,14 +3057,6 @@ liberate_religion = {
 					who = event_target:new_ruler
 					tributary_type = permanent
 				}
-			}
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}

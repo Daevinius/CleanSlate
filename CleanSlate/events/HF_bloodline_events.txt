@@ -777,7 +777,7 @@ character_event = {
 					independent = yes
 					is_female = yes
 					is_alternate_start = no
-					lower_tier_than = EMPEROR
+					lower_real_tier_than = EMPEROR
 					religion_group = pagan_group
 					realm_size < 120
 					religion_openly_hellenic_or_reformed_trigger = no
@@ -1409,7 +1409,6 @@ character_event = {
 		}
 	}
 
-
 	immediate = {
 		FROM = {
 			change_variable = {
@@ -1547,7 +1546,6 @@ character_event = {
 			value < 30
 		}
 	}
-
 
 	immediate = {
 		change_variable = {
@@ -2418,9 +2416,8 @@ character_event = {
 				limit = { is_female = yes }
 
 				OR = { # AltStart
-					has_religion_feature = religion_matriarchal
-					has_religion_feature = religion_equal
-					has_religion_feature = religion_feature_bon
+					religion_is_matriarchal_trigger = yes
+					religion_is_equal_trigger = yes
 				}
 			}
 		}
@@ -3297,19 +3294,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3377,19 +3372,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3442,19 +3435,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3505,19 +3496,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3540,10 +3529,8 @@ character_event = {
 		name = EVTOPTAHF24055
 
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_cosmopolitan
-				has_religion_feature = religion_peaceful
-			}
+			religion_is_cosmopolitan_trigger = no
+			religion_is_peaceful_trigger = no
 		}
 
 		character_event = {
@@ -3576,19 +3563,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3723,19 +3708,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3860,19 +3843,17 @@ narrative_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -3903,12 +3884,12 @@ narrative_event = {
 			limit = { is_female = no }
 
 			create_bloodline = {
-				type = event_benevolent_bloodline
+				type = benevolent_bloodline
 			}
 		}
 		else = {
 			create_bloodline = {
-				type = event_benevolent_bloodline
+				type = benevolent_bloodline
 				inheritance = matrilineal
 			}
 		}
@@ -4263,12 +4244,12 @@ narrative_event = {
 			limit = { is_female = no }
 
 			create_bloodline = {
-				type = event_family_bloodline
+				type = family_bloodline
 			}
 		}
 		else = {
 			create_bloodline = {
-				type = event_family_bloodline
+				type = family_bloodline
 				inheritance = matrilineal
 			}
 		}
@@ -4561,12 +4542,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_01
+						type = peaceful_bloodline_christian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_01
+						type = peaceful_bloodline_christian
 						inheritance = matrilineal
 					}
 				}
@@ -4577,12 +4558,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_02
+						type = peaceful_bloodline_muslim
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_02
+						type = peaceful_bloodline_muslim
 						inheritance = matrilineal
 					}
 				}
@@ -4593,12 +4574,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_03
+						type = peaceful_bloodline_jewish
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_03
+						type = peaceful_bloodline_jewish
 						inheritance = matrilineal
 					}
 				}
@@ -4609,12 +4590,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_04
+						type = peaceful_bloodline_pagan
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_04
+						type = peaceful_bloodline_pagan
 						inheritance = matrilineal
 					}
 				}
@@ -4625,12 +4606,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_05
+						type = peaceful_bloodline_zoroastrian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_05
+						type = peaceful_bloodline_zoroastrian
 						inheritance = matrilineal
 					}
 				}
@@ -4641,12 +4622,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_06
+						type = peaceful_bloodline_indian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_peaceful_bloodline_06
+						type = peaceful_bloodline_indian
 						inheritance = matrilineal
 					}
 				}
@@ -4654,8 +4635,8 @@ narrative_event = {
 		}
 
 		new_bloodline = {
-			set_name = event_religion_peaceful_bloodline_name
-			set_description = event_religion_peaceful_bloodline_description
+			set_name = peaceful_bloodline
+			set_description = peaceful_bloodline_desc
 		}
 
 		set_bloodline_founder_religion_flag_effect = yes
@@ -4950,12 +4931,12 @@ narrative_event = {
 			limit = { is_female = no }
 
 			create_bloodline = {
-				type = event_technology_bloodline
+				type = technology_bloodline
 			}
 		}
 		else = {
 			create_bloodline = {
-				type = event_technology_bloodline
+				type = technology_bloodline
 				inheritance = matrilineal
 			}
 		}
@@ -5249,12 +5230,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_01
+						type = aggressive_bloodline_christian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_01
+						type = aggressive_bloodline_christian
 						inheritance = matrilineal
 					}
 				}
@@ -5265,12 +5246,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_02
+						type = aggressive_bloodline_muslim
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_02
+						type = aggressive_bloodline_muslim
 						inheritance = matrilineal
 					}
 				}
@@ -5281,12 +5262,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_03
+						type = aggressive_bloodline_jewish
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_03
+						type = aggressive_bloodline_jewish
 						inheritance = matrilineal
 					}
 				}
@@ -5297,12 +5278,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_04
+						type = aggressive_bloodline_pagan
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_04
+						type = aggressive_bloodline_pagan
 						inheritance = matrilineal
 					}
 				}
@@ -5313,12 +5294,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_05
+						type = aggressive_bloodline_zoroastrian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_05
+						type = aggressive_bloodline_zoroastrian
 						inheritance = matrilineal
 					}
 				}
@@ -5329,12 +5310,12 @@ narrative_event = {
 					limit = { is_female = no }
 
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_06
+						type = aggressive_bloodline_indian
 					}
 				}
 				else = {
 					create_bloodline = {
-						type = event_religion_aggressive_bloodline_06
+						type = aggressive_bloodline_indian
 						inheritance = matrilineal
 					}
 				}
@@ -5342,8 +5323,8 @@ narrative_event = {
 		}
 
 		new_bloodline = {
-			set_name = event_religion_aggressive_bloodline_name
-			set_description = event_religion_aggressive_bloodline_description
+			set_name = aggressive_bloodline
+			set_description = aggressive_bloodline_desc
 		}
 
 		set_bloodline_founder_religion_flag_effect = yes
@@ -5360,19 +5341,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_bloodlines
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -5506,19 +5485,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_lunatic
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -5650,19 +5627,17 @@ narrative_event = {
 	sound = bloodline_added
 
 	picture = {
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 		picture = GFX_evt_matriarchy_throne_room
 	}
 	picture = {
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 		picture = GFX_evt_tengri_throneroom_oldgods
 	}
 	picture = {
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_patriarchal
-				has_religion_feature = religion_matriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 		picture = GFX_evt_lunatic
 	}
@@ -5694,18 +5669,17 @@ narrative_event = {
 			limit = { is_female = no }
 
 			create_bloodline = {
-				type = event_ruthless_bloodline
+				type = ruthless_bloodline
 			}
 		}
 		else = {
 			create_bloodline = {
-				type = event_ruthless_bloodline
+				type = ruthless_bloodline
 				inheritance = matrilineal
 			}
 		}
 	}
 }
-
 
 ########################################################
 ### Custom Bloodlines Special effects
@@ -6630,7 +6604,6 @@ character_event = {
 		death = {
 			death_reason = death_murder_unknown
 			killer = event_target:assassin_plot_owner
-
 		}
 	}
 
@@ -7277,7 +7250,7 @@ character_event = {
 			trait = brave
 			trait = content
 			has_character_flag = special_marshal
-			has_religion_feature = religion_matriarchal
+			religion_is_matriarchal_trigger = yes
 		}
 
 		OR = {
@@ -7371,7 +7344,6 @@ character_event = {
 				who = ROOT
 				years = 100
 			}
-
 
 			if = {
 				limit = { is_betrothed = yes }
@@ -7756,19 +7728,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_fancy_feast
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_matriarchal
-				has_religion_feature = religion_patriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -7819,10 +7789,10 @@ character_event = {
 
 					trigger_if = {
 						limit = { ROOT = { is_female = no } }
-						NOT = { has_religion_feature = religion_matriarchal }
+						religion_is_matriarchal_trigger = no
 					}
 					trigger_else = {
-						NOT = { has_religion_feature = religion_patriarchal }
+						religion_is_patriarchal_trigger = no
 					}
 				}
 
@@ -8013,19 +7983,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_fancy_feast
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_matriarchal
-				has_religion_feature = religion_patriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -8054,10 +8022,10 @@ character_event = {
 		trigger = {
 			trigger_if = {
 				limit = { FROM = { is_female = yes } }
-				has_religion_feature = religion_patriarchal
+				religion_is_patriarchal_trigger = yes
 			}
 			trigger_else = {
-				has_religion_feature = religion_matriarchal
+				religion_is_matriarchal_trigger = yes
 			}
 		}
 
@@ -8181,19 +8149,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_fancy_feast
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_matriarchal
-				has_religion_feature = religion_patriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -8255,19 +8221,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_fancy_feast
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_matriarchal
-				has_religion_feature = religion_patriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -8308,19 +8272,17 @@ character_event = {
 
 	picture = {
 		picture = GFX_evt_matriarchy_throne_room
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_tengri_throneroom_oldgods
-		trigger = { has_religion_feature = religion_patriarchal }
+		trigger = { religion_is_patriarchal_trigger = yes }
 	}
 	picture = {
 		picture = GFX_evt_fancy_feast
 		trigger = {
-			NOR = {
-				has_religion_feature = religion_matriarchal
-				has_religion_feature = religion_patriarchal
-			}
+			religion_is_matriarchal_trigger = no
+			religion_is_patriarchal_trigger = no
 		}
 	}
 
@@ -11370,8 +11332,8 @@ narrative_event = {
 				region = world_europe_north
 				region = world_europe_south
 				region = world_europe_east
-				region = world_asia_minor
-				region = world_middle_east_jerusalem
+				region = world_middle_east_asia_minor
+				region = world_middle_east_levant
 				region = world_middle_east_arabia
 			}
 		}
@@ -11392,7 +11354,7 @@ narrative_event = {
 			capital_scope = {
 				NOR = {
 					region = world_europe_south
-					region = world_asia_minor
+					region = world_middle_east_asia_minor
 				}
 			}
 		}
@@ -11469,7 +11431,7 @@ narrative_event = {
 
 		mult_modifier = {
 			factor = 2
-			capital_scope = { region = world_asia_minor }
+			capital_scope = { region = world_middle_east_asia_minor }
 		}
 
 		mult_modifier = {
@@ -11649,8 +11611,8 @@ narrative_event = {
 		trigger = {
 			capital_scope = {
 				OR = {
-					region = world_asia_minor
-					region = world_middle_east_jerusalem
+					region = world_middle_east_asia_minor
+					region = world_middle_east_levant
 					region = world_middle_east_arabia
 				}
 			}
@@ -11661,8 +11623,8 @@ narrative_event = {
 		trigger = {
 			capital_scope = {
 				NOR = {
-					region = world_asia_minor
-					region = world_middle_east_jerusalem
+					region = world_middle_east_asia_minor
+					region = world_middle_east_levant
 					region = world_middle_east_arabia
 				}
 			}
@@ -11912,8 +11874,8 @@ narrative_event = {
 
 						capital_scope = {
 							NOR = {
-								region = world_asia_minor
-								region = world_middle_east_jerusalem
+								region = world_middle_east_asia_minor
+								region = world_middle_east_levant
 								region = world_middle_east_arabia
 							}
 						}
@@ -11927,8 +11889,8 @@ narrative_event = {
 								held_under_PREV = yes
 
 								OR = {
-									region = world_asia_minor
-									region = world_middle_east_jerusalem
+									region = world_middle_east_asia_minor
+									region = world_middle_east_levant
 									region = world_middle_east_arabia
 								}
 							}

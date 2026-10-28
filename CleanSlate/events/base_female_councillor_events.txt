@@ -35,11 +35,8 @@ character_event = {
 
 		is_inaccessible_trigger = no
 		gender_equality_trigger = no
-
-		NOR = {
-			has_religion_feature = religion_matriarchal
-			has_religion_feature = religion_patriarchal
-		}
+		religion_is_matriarchal_trigger = no
+		religion_is_patriarchal_trigger = no
 	}
 
 	immediate = {
@@ -93,14 +90,12 @@ character_event = {
 					remove_trait = content
 					remove_lifestyle_trait_effect = yes
 
-
 					if = {
 						limit = { has_dharmic_religion_trigger = yes }
-
-						remove_trait = brahmin
-						remove_trait = vaishya
 						add_trait = kshatriya
 					}
+
+					add_religious_traits = yes
 
 					# Adds some more traits
 					random_list = {
@@ -110,7 +105,6 @@ character_event = {
 						20 = { add_trait = game_master }
 						20 = { add_trait = hedonist }
 					}
-
 				}
 
 				character_event = { id = 77779 }
@@ -168,11 +162,10 @@ character_event = {
 
 					if = {
 						limit = { has_dharmic_religion_trigger = yes }
-
-						remove_trait = brahmin
-						remove_trait = vaishya
 						add_trait = kshatriya
 					}
+
+					add_religious_traits = yes
 
 					# Adds some more traits
 					random_list = {
@@ -257,11 +250,10 @@ character_event = {
 
 					if = {
 						limit = { has_dharmic_religion_trigger = yes }
-
-						remove_trait = brahmin
-						remove_trait = kshatriya
 						add_trait = vaishya
 					}
+
+					add_religious_traits = yes
 
 					# Adds some more traits
 					random_list = {
@@ -328,11 +320,10 @@ character_event = {
 
 					if = {
 						limit = { has_dharmic_religion_trigger = yes }
-
-						remove_trait = brahmin
-						remove_trait = kshatriya
 						add_trait = vaishya
 					}
+
+					add_religious_traits = yes
 
 					# Adds some more traits
 					random_list = {
@@ -803,12 +794,9 @@ character_event = {
 
 	trigger = {
 		gender_equality_trigger = no
-
-		NOR = {
-			has_law = status_of_women_3
-			has_religion_feature = religion_matriarchal
-			has_religion_feature = religion_patriarchal
-		}
+		religion_is_matriarchal_trigger = no
+		religion_is_patriarchal_trigger = no
+		NOT = { has_law = status_of_women_3 }
 
 		any_courtier_or_vassal = {
 			is_close_relative = ROOT
@@ -1141,7 +1129,6 @@ character_event = {
 
 	is_triggered_only = yes
 
-
 	option = {
 		name = EVTOPTA_77795
 
@@ -1285,12 +1272,9 @@ character_event = {
 
 	trigger = {
 		gender_equality_trigger = no
-
-		NOR = {
-			has_law = status_of_women_3
-			has_religion_feature = religion_matriarchal
-			has_religion_feature = religion_patriarchal
-		}
+		religion_is_matriarchal_trigger = no
+		religion_is_patriarchal_trigger = no
+		NOT = { has_law = status_of_women_3 }
 
 		any_vassal = {
 			is_female = yes

@@ -384,20 +384,20 @@ narrative_event = {
 		text = EVTDESC_TOG_3101_A
 		trigger = { # Men want to join the guard!
 			gender_equality_trigger = no
-			NOT = { has_religion_feature = religion_matriarchal }
+			religion_is_matriarchal_trigger = no
 		}
 	}
 	desc = {
 		text = EVTDESC_TOG_3101_B
 		trigger = { # Men *and* women want to join the guard
 			gender_equality_trigger = yes
-			NOT = { has_religion_feature = religion_matriarchal }
+			religion_is_matriarchal_trigger = no
 		}
 	}
 	desc = {
 		text = EVTDESC_TOG_3101_C
 		trigger = { # Women want to join the guard!
-			has_religion_feature = religion_matriarchal
+			religion_is_matriarchal_trigger = yes
 		}
 	}
 
@@ -452,7 +452,7 @@ character_event = {
 			}
 
 			norse_pagan_reformed = {
-				has_religion_feature = religion_matriarchal
+				religion_is_matriarchal_trigger = yes
 			}
 		}
 	}
@@ -482,7 +482,7 @@ character_event = {
 		else_if = {
 			limit = {
 				norse_pagan_reformed = {
-					has_religion_feature = religion_matriarchal
+					religion_is_matriarchal_trigger = yes
 				}
 			}
 
@@ -536,7 +536,7 @@ character_event = {
 		OR = { # Updated: New gender check for ROOT, to account for special circumstances...
 			trigger_if = { # Boys always dream of fighting, when not explicitly blocked from it
 				limit = { is_female = no }
-				NOT = { has_religion_feature = religion_matriarchal }
+				religion_is_matriarchal_trigger = no
 			}
 			trigger_else = {
 				gender_equality_trigger = yes
@@ -2501,7 +2501,6 @@ character_event = {
 		}
 	}
 
-
 	option = {
 		name = EVTOPTA_TOG_3218
 
@@ -3162,29 +3161,11 @@ character_event = {
 
 	desc = {
 		text = EVTDESC_TOG_3320
-		trigger = {
-			OR = {
-				religion_openly_norse_or_reformed_trigger = yes
-
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-			}
-		}
+		trigger = { religion_openly_norse_or_reformed_trigger = yes }
 	}
 	desc = {
 		text = EVTDESC_TOG_3320_HF
-		trigger = {
-			religion_openly_norse_or_reformed_trigger = no
-
-			NOT = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-			}
-		}
+		trigger = { religion_openly_norse_or_reformed_trigger = no }
 	}
 
 	picture = {
@@ -3206,39 +3187,12 @@ character_event = {
 	trigger = {
 		this_is_sea_raider_trigger = no
 
-		trigger_if = {
-			limit = {
-				NOT = { has_dlc = "The Old Gods" }
-			}
+		OR = {
+			religion_is_adventuring_and_seafaring_trigger = yes
 
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
-
-				has_religion_feature = religion_feature_norse
-			}
-		}
-
-		trigger_if = {
-			limit = { religion_openly_norse_or_reformed_trigger = no }
-
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_viking
+				bloodline_is_active_for = PREV
 			}
 		}
 
@@ -3261,19 +3215,7 @@ character_event = {
 		}
 		else = {
 			add_trait = pirate
-
-			if = {
-				limit = {
-					any_owned_bloodline = {
-						has_bloodline_flag = bloodline_viking
-						bloodline_is_active_for = PREV
-					}
-				}
-
-				set_character_flag = acquired_pirate_trait_by_bloodline
-			}
 		}
-
 	}
 }
 
@@ -3284,29 +3226,11 @@ character_event = {
 
 	desc = {
 		text = TOG.3321.d
-		trigger = {
-			OR = {
-				religion_openly_norse_or_reformed_trigger = yes
-
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-			}
-		}
+		trigger = { trait = viking }
 	}
 	desc = {
 		text = EVTDESC_TOG_3321_HF
-		trigger = {
-			religion_openly_norse_or_reformed_trigger = no
-
-			NOT = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-			}
-		}
+		trigger = { trait = pirate }
 	}
 
 	picture = {
@@ -3342,39 +3266,12 @@ character_event = {
 			value >= 50
 		}
 
-		trigger_if = {
-			limit = {
-				NOT = { has_dlc = "The Old Gods" }
-			}
+		OR = {
+			religion_is_adventuring_and_seafaring_trigger = yes
 
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
-
-				has_religion_feature = religion_feature_norse
-			}
-		}
-
-		trigger_if = {
-			limit = { religion_openly_norse_or_reformed_trigger = no }
-
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_viking
+				bloodline_is_active_for = PREV
 			}
 		}
 
@@ -3433,39 +3330,12 @@ character_event = {
 			value >= 100
 		}
 
-		trigger_if = {
-			limit = {
-				NOT = { has_dlc = "The Old Gods" }
-			}
+		OR = {
+			religion_is_adventuring_and_seafaring_trigger = yes
 
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
-
-				has_religion_feature = religion_feature_norse
-			}
-		}
-
-		trigger_if = {
-			limit = { religion_openly_norse_or_reformed_trigger = no }
-
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_viking
+				bloodline_is_active_for = PREV
 			}
 		}
 
@@ -3500,39 +3370,12 @@ character_event = {
 	trigger = {
 		this_is_sea_raider_trigger = yes # There's still chance of gaining a Bloodline if variable goes high enough even if you are already a sea_king/queen
 
-		trigger_if = {
-			limit = {
-				NOT = { has_dlc = "The Old Gods" }
-			}
+		OR = {
+			religion_is_adventuring_and_seafaring_trigger = yes
 
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
-
-				has_religion_feature = religion_feature_norse
-			}
-		}
-
-		trigger_if = {
-			limit = { religion_openly_norse_or_reformed_trigger = no }
-
-			OR = {
-				any_owned_bloodline = {
-					has_bloodline_flag = bloodline_viking
-					bloodline_is_active_for = PREV
-				}
-
-				AND = {
-					has_religion_feature = religion_adventuring
-					has_religion_feature = religion_seafaring
-				}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_viking
+				bloodline_is_active_for = PREV
 			}
 		}
 

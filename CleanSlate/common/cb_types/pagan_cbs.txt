@@ -1,6 +1,6 @@
 # pagan_county_conquest
 # pagan_subjugation
-# pagan_holy_war
+# pagan_holy_war - removed and combined with standard holy war
 # viking_invasion
 # tribal_invasion
 # matriarchal_deposition_war
@@ -111,7 +111,6 @@ pagan_county_conquest = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -333,62 +332,8 @@ pagan_county_conquest = {
 		factor = 1
 
 		trigger = {
-			trigger_if = {
-				limit = {
-					ROOT = {
-						is_tribal = yes
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-							holding_type = tribal
-						}
-					}
-				}
-			}
-			trigger_else_if = {
-				limit = {
-					ROOT = {
-						is_nomadic = no
-						is_tribal = no
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-						}
-					}
-				}
-			}
-
-			trigger_if = {
-				limit = {
-					ROOT = {
-						has_character_flag = is_temujin
-						has_landed_title = e_mongol_empire
-						is_landed = yes
-					}
-				}
-
-				FROM = {
-					NOT = { has_landed_title = e_china_west_governor }
-				}
-			}
+			suitable_holdings_trigger = yes
+			temujin_avoid_china_trigger = yes
 		}
 
 		mult_modifier = {
@@ -399,8 +344,8 @@ pagan_county_conquest = {
 			}
 
 			OR = {
-				empire = { title = e_scandinavia }
-				kingdom = { title = k_novgorod }
+				region = world_europe_north
+				region = custom_novgorod
 			}
 		}
 
@@ -414,15 +359,9 @@ pagan_county_conquest = {
 			has_global_flag = viking_age_started
 
 			OR = {
-				empire = { title = e_britannia }
-
-				kingdom = {
-					OR = {
-						title = k_brittany
-						title = k_france
-						title = k_frisia
-					}
-				}
+				region = world_europe_west_british_isles
+				region = world_europe_west_gaul
+				region = custom_frisia
 			}
 		}
 
@@ -442,7 +381,6 @@ pagan_county_conquest = {
 			FROM = {
 				NOT = { religion_group = pagan_group }
 			}
-
 		}
 	}
 }
@@ -547,7 +485,6 @@ pagan_subjugation = {
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -660,7 +597,6 @@ pagan_subjugation = {
 
 			participation_scaled_prestige = 100
 			piety = 100
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -692,7 +628,7 @@ pagan_subjugation = {
 	}
 }
 
-# pagan_holy_war removed and combined with standard holy war
+# pagan_holy_war - removed and combined with standard holy war
 
 # The Prepared Invasion CB of Norse Heathens
 viking_invasion = {
@@ -728,17 +664,14 @@ viking_invasion = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -926,7 +859,6 @@ viking_invasion = {
 
 			prestige = 300
 			participation_scaled_prestige = 250
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -1073,12 +1005,10 @@ tribal_invasion = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
@@ -1100,7 +1030,6 @@ tribal_invasion = {
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1232,14 +1161,6 @@ tribal_invasion = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -1350,8 +1271,6 @@ tribal_invasion = {
 						give_nickname = nick_the_bold
 					}
 				}
-
-				roman_victory_triumph_effect = yes
 			}
 		}
 
@@ -1381,171 +1300,13 @@ tribal_invasion = {
 		factor = 0.9 # Prefer using CB's without on_add costs
 
 		trigger = {
-			trigger_if = {
-				limit = {
-					ROOT = {
-						is_tribal = yes
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-							holding_type = tribal
-						}
-					}
-				}
-			}
-			trigger_else_if = {
-				limit = {
-					ROOT = {
-						is_nomadic = no
-						is_tribal = no
-					}
-
-					FROM = {
-						is_nomadic = yes
-					}
-
-				}
-
-				any_direct_de_jure_vassal_title = {
-					any_direct_de_jure_vassal_title = {
-						OR = {
-							holding_type = castle
-							holding_type = city
-						}
-					}
-				}
-			}
-
-			trigger_if = {
-				limit = {
-					ROOT = {
-						has_character_flag = is_temujin
-						has_landed_title = e_mongol_empire
-						is_landed = yes
-					}
-				}
-
-				FROM = {
-					NOT = { has_landed_title = e_china_west_governor }
-				}
-			}
-
-			# This ensures that the AI doesn't declare this type of war against someone who only holds a few counties within the targeted title.
-			trigger_if = {
-				limit = {
-					# Attacker
-					ROOT = {
-						OR = {
-							has_landed_title = e_mongol_empire
-							has_landed_title = e_aztec_empire
-						}
-					}
-				}
-
-				# Defender
-				FROM = {
-					num_of_realm_counties = {
-						value >= 3
-						title = PREV
-					}
-				}
-			}
+			suitable_holdings_trigger = yes
+			temujin_avoid_china_trigger = yes
+			defender_controls_enough_land_trigger = yes
 		}
 
 		coronation_factor = yes
-
-		# Try to guide the Hordes in the right direction
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				OR = {
-					dynasty = 613 # Seljuks
-					dynasty = 800 # Timurids
-
-					primary_title = {
-						title = e_ilkhanate
-					}
-				}
-			}
-
-			OR = {
-				empire = {
-					NOR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				FROM = {
-					primary_title = {
-						title = e_golden_horde
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				primary_title = {
-					title = e_golden_horde
-				}
-			}
-
-			OR = {
-				empire = {
-					OR = {
-						title = e_persia
-						title = e_byzantium
-						title = e_arabia
-					}
-				}
-
-				FROM = {
-					primary_title = {
-						title = e_ilkhanate
-					}
-
-					year < 1300
-				}
-			}
-		}
-
-		mult_modifier = {
-			factor = 0.1
-
-			ROOT = {
-				culture = hungarian
-
-				primary_title = {
-					OR = {
-						title = k_hungary
-						title = e_carpathia
-					}
-				}
-			}
-
-			empire = {
-				OR = {
-					title = e_tartaria
-					title = e_rus
-				}
-			}
-		}
+		horde_guidance_factor = yes
 	}
 }
 
@@ -1566,8 +1327,8 @@ matriarchal_deposition_war = {
 		has_dlc = "Holy Fury"
 
 		ROOT = {
-			has_religion_feature = religion_matriarchal
-			has_religion_feature = religion_warlike
+			religion_is_matriarchal_trigger = yes
+			religion_is_warlike_trigger = yes
 			higher_real_tier_than = DUKE
 			shares_realm_border_with = FROM
 			religion = top_liege
@@ -1590,8 +1351,8 @@ matriarchal_deposition_war = {
 	is_valid = {
 		# Attacker
 		ROOT = {
-			has_religion_feature = religion_matriarchal
-			has_religion_feature = religion_warlike
+			religion_is_matriarchal_trigger = yes
+			religion_is_warlike_trigger = yes
 			higher_real_tier_than = DUKE
 			is_female = yes
 			NOT = { same_realm = FROM }
@@ -1607,7 +1368,6 @@ matriarchal_deposition_war = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1676,7 +1436,7 @@ matriarchal_deposition_war = {
 						any_dynasty_member = {
 							is_female = yes
 							is_incapable = no
-							NOT = { has_religion_feature = religion_patriarchal }
+							religion_is_patriarchal_trigger = no
 						}
 					}
 
@@ -1684,7 +1444,7 @@ matriarchal_deposition_war = {
 						limit = {
 							is_female = yes
 							is_incapable = no
-							NOT = { has_religion_feature = religion_patriarchal }
+							religion_is_patriarchal_trigger = no
 						}
 
 						preferred_limit = {
@@ -1745,7 +1505,7 @@ matriarchal_deposition_war = {
 						any_vassal = {
 							is_female = yes
 							is_incapable = no
-							NOT = { has_religion_feature = religion_patriarchal }
+							religion_is_patriarchal_trigger = no
 						}
 					}
 
@@ -1753,7 +1513,7 @@ matriarchal_deposition_war = {
 						limit = {
 							is_female = yes
 							is_incapable = no
-							NOT = { has_religion_feature = religion_patriarchal }
+							religion_is_patriarchal_trigger = no
 						}
 
 						preferred_limit = {
@@ -1776,7 +1536,7 @@ matriarchal_deposition_war = {
 
 						preferred_limit = {
 							is_adult = yes
-							has_religion_feature = religion_matriarchal
+							religion_is_matriarchal_trigger = yes
 						}
 
 						preferred_limit = {
@@ -1864,17 +1624,10 @@ matriarchal_deposition_war = {
 				}
 
 				# Titles assigned, now onto laws
-				if = {
-					limit = {
-						event_target:new_swapped_ruler = {
-							NOR = {
-								has_religion_feature = religion_equal
-								has_religion_feature = religion_feature_bon
-							}
-						}
-					}
+				event_target:new_swapped_ruler = {
+					if = {
+						limit = { religion_is_equal_trigger = no }
 
-					event_target:new_swapped_ruler = {
 						primary_title = {
 							add_law = {
 								law = status_of_women_4
@@ -2027,7 +1780,7 @@ matriarchal_deposition_war = {
 			}
 
 			if = {
-				limit = { NOT = { has_religion_feature = religion_matriarchal } }
+				limit = { religion_is_matriarchal_trigger = no }
 
 				religion_authority = {
 					name = won_holy_war
@@ -2099,15 +1852,15 @@ matriarchal_deposition_war = {
 		mult_modifier = {
 			factor = 5
 
-			ROOT = { has_religion_feature = religion_patriarchal }
-			FROM = { has_religion_feature = religion_matriarchal }
+			ROOT = { religion_is_patriarchal_trigger = yes }
+			FROM = { religion_is_matriarchal_trigger = yes }
 		}
 
 		mult_modifier = {
 			factor = 5
 
-			ROOT = { has_religion_feature = religion_matriarchal }
-			FROM = { has_religion_feature = religion_patriarchal }
+			ROOT = { religion_is_matriarchal_trigger = yes }
+			FROM = { religion_is_patriarchal_trigger = yes }
 		}
 	}
 }
@@ -2125,7 +1878,6 @@ patriarchal_deposition_war = {
 	allowed_to_target_tributaries = no
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -2134,8 +1886,8 @@ patriarchal_deposition_war = {
 
 		# Attacker
 		ROOT = {
-			has_religion_feature = religion_patriarchal
-			has_religion_feature = religion_warlike
+			religion_is_patriarchal_trigger = yes
+			religion_is_warlike_trigger = yes
 			higher_real_tier_than = DUKE
 			shares_realm_border_with = FROM
 			religion = top_liege
@@ -2159,8 +1911,8 @@ patriarchal_deposition_war = {
 	is_valid = {
 		# Attacker
 		ROOT = {
-			has_religion_feature = religion_patriarchal
-			has_religion_feature = religion_warlike
+			religion_is_patriarchal_trigger = yes
+			religion_is_warlike_trigger = yes
 			higher_real_tier_than = DUKE
 			is_female = no
 			NOT = { same_realm = FROM }
@@ -2241,7 +1993,7 @@ patriarchal_deposition_war = {
 						any_dynasty_member = {
 							is_female = no
 							is_incapable = no
-							NOT = { has_religion_feature = religion_matriarchal }
+							religion_is_matriarchal_trigger = no
 						}
 					}
 
@@ -2249,7 +2001,7 @@ patriarchal_deposition_war = {
 						limit = {
 							is_female = no
 							is_incapable = no
-							NOT = { has_religion_feature = religion_matriarchal }
+							religion_is_matriarchal_trigger = no
 						}
 
 						preferred_limit = {
@@ -2311,7 +2063,7 @@ patriarchal_deposition_war = {
 						any_vassal = {
 							is_female = no
 							is_incapable = no
-							NOT = { has_religion_feature = religion_matriarchal }
+							religion_is_matriarchal_trigger = no
 						}
 					}
 
@@ -2319,7 +2071,7 @@ patriarchal_deposition_war = {
 						limit = {
 							is_female = no
 							is_incapable = no
-							NOT = { has_religion_feature = religion_matriarchal }
+							religion_is_matriarchal_trigger = no
 						}
 
 						preferred_limit = {
@@ -2342,7 +2094,7 @@ patriarchal_deposition_war = {
 
 						preferred_limit = {
 							is_adult = yes
-							has_religion_feature = religion_patriarchal
+							religion_is_patriarchal_trigger = yes
 						}
 
 						preferred_limit = {
@@ -2431,17 +2183,10 @@ patriarchal_deposition_war = {
 				}
 
 				# Titles assigned, now onto laws
-				if = {
-					limit = {
-						event_target:new_swapped_ruler = {
-							NOR = {
-								has_religion_feature = religion_equal
-								has_religion_feature = religion_feature_bon
-							}
-						}
-					}
+				event_target:new_swapped_ruler = {
+					if = {
+						limit = { religion_is_equal_trigger = no }
 
-					event_target:new_swapped_ruler = {
 						primary_title = {
 							add_law = {
 								law = status_of_women_0
@@ -2617,7 +2362,7 @@ patriarchal_deposition_war = {
 			}
 
 			if = {
-				limit = { NOT = { has_religion_feature = religion_patriarchal } }
+				limit = { religion_is_patriarchal_trigger = no }
 
 				religion_authority = {
 					name = won_holy_war
@@ -2656,15 +2401,15 @@ patriarchal_deposition_war = {
 		mult_modifier = {
 			factor = 5
 
-			ROOT = { has_religion_feature = religion_patriarchal }
-			FROM = { has_religion_feature = religion_matriarchal }
+			ROOT = { religion_is_patriarchal_trigger = yes }
+			FROM = { religion_is_matriarchal_trigger = yes }
 		}
 
 		mult_modifier = {
 			factor = 5
 
-			ROOT = { has_religion_feature = religion_matriarchal }
-			FROM = { has_religion_feature = religion_patriarchal }
+			ROOT = { religion_is_matriarchal_trigger = yes }
+			FROM = { religion_is_patriarchal_trigger = yes }
 		}
 	}
 }
@@ -2686,16 +2431,10 @@ flower_war_cb = {
 		# Attacker
 		ROOT = {
 			trait = bloodthirsty_gods_3
-
-			OR = {
-				has_religion_feature = religion_ritual_sacrifice
-				religion_openly_aztec_or_reformed_trigger = yes
-			}
-
+			religion_has_ritual_sacrifice_trigger = yes
 			mercenary = no
 
 			NOR = {
-				has_religion_feature = religion_peaceful # Aztecs could reform as Peaceful
 				same_realm = FROM
 				is_vassal_or_below_of = FROM
 			}
@@ -2720,16 +2459,11 @@ flower_war_cb = {
 		# Attacker
 		ROOT = {
 			trait = bloodthirsty_gods_3
-
-			OR = {
-				has_religion_feature = religion_ritual_sacrifice
-				religion_openly_aztec_or_reformed_trigger = yes
-			}
+			religion_has_ritual_sacrifice_trigger = yes
 		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -2930,7 +2664,6 @@ flower_war_cb = {
 
 			piety = 100
 			participation_scaled_prestige = 100
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -3090,8 +2823,6 @@ truebelievers_bid_for_independence = {
 				}
 			}
 		}
-
-		check_if_reconquista_finished_effect = yes
 	}
 
 	on_fail = {

@@ -1201,7 +1201,6 @@ character_event = {
 	}
 }
 
-
 #############################
 # Additional flavour events #
 #############################
@@ -1526,7 +1525,6 @@ character_event = {
 		piety = 10
 	}
 }
-
 
 ##########################################################################
 # The Hadiths on Hajj
@@ -2568,9 +2566,11 @@ character_event = {
 	war = no
 
 	trigger = {
-		any_demesne_title = {
-			lower_tier_than = DUKE
-			is_occupied = no
+		NOT = {
+			any_demesne_title = {
+				lower_real_tier_than = DUKE
+				is_occupied = no
+			}
 		}
 
 		job_spiritual = {

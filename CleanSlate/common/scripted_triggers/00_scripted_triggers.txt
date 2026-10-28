@@ -19,7 +19,6 @@
 # is_single_player_observer_mode
 # is_not_in_regency_trigger
 
-
 # Remember to write this "is_inaccessible_trigger = no" when scripting, or the tooltip will be messed up (it reads "Is NOT in Hiding, in Seclusion, or out traveling")
 is_inaccessible_trigger = {
 	custom_tooltip = {
@@ -162,16 +161,16 @@ proselytize_convert_independent_trigger = {
 		}
 
 		FROM = {
-			higher_tier_than = COUNT
+			higher_real_tier_than = COUNT
 
 			trigger_if = {
 				limit = { independent = no }
-				higher_tier_than = DUKE
+				higher_real_tier_than = DUKE
 			}
 
 			trigger_if = {
 				limit = { religion_group = pagan_group }
-				has_religion_feature = religion_proselytizing
+				religion_is_proselytizing_trigger = yes
 			}
 		}
 
@@ -380,3 +379,6 @@ held_under_PREV = {
 		}
 	}
 }
+
+# Capable of recruiting retinues. Unused in CleanSlate
+can_have_retinues = {}

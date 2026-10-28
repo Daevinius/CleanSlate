@@ -109,7 +109,6 @@
 # GetSeductionAstrologyPostScript
 # GetIngredientShortName
 # GetIngredientProperty
-# GetDemonHuntersEventTitle
 # GetFriendEnjoyableQuirk
 # GetLoverEnjoyableQuirk
 
@@ -1684,7 +1683,6 @@ defined_text = {
 	}
 }
 
-
 ###EDUCATION###
 defined_text = {
 	name = GetEducationSubject
@@ -1789,7 +1787,6 @@ defined_text = {
 		trigger = { has_education_learning_trigger = yes }
 	}
 }
-
 
 defined_text = {
 	name = GetEducationalTopicPlural
@@ -7964,9 +7961,7 @@ defined_text = {
 	}
 	text = {
 		localisation_key = String_Catholic
-		trigger = {
-			religion = catholic
-		}
+		trigger = { religion = catholic }
 	}
 	text = {
 		localisation_key = String_Christian
@@ -7977,87 +7972,59 @@ defined_text = {
 	}
 	text = {
 		localisation_key = String_Muslim
-		trigger = {
-			religion_group = muslim
-		}
+		trigger = { religion_group = muslim }
 	}
 	text = {
 		localisation_key = String_Jew
-		trigger = {
-			religion_group = jewish_group
-		}
+		trigger = { religion_group = jewish_group }
 	}
 	text = {
 		localisation_key = String_Zoroastrian
-		trigger = {
-			religion_group = zoroastrian_group
-		}
+		trigger = { religion_group = zoroastrian_group }
 	}
 	text = {
 		localisation_key = String_Buddhist
-		trigger = {
-			religion = buddhist
-		}
+		trigger = { religion = buddhist }
 	}
 	text = {
 		localisation_key = String_Jain
-		trigger = {
-			religion = jain
-		}
+		trigger = { religion = jain }
 	}
 	text = {
 		localisation_key = String_Hindu
-		trigger = {
-			religion = hindu
-		}
+		trigger = { religion = hindu }
 	}
 	text = {
 		localisation_key = String_Taoist
-		trigger = {
-			religion = taoist
-		}
+		trigger = { religion = taoist }
 	}
 	text = {
 		localisation_key = String_Norse
-		trigger = {
-			religion_openly_norse_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_norse_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_Slav
-		trigger = {
-			religion_openly_slavic_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_slavic_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_Romuvan
-		trigger = {
-			religion_openly_baltic_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_baltic_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_Finn
-		trigger = {
-			religion_openly_finnish_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_finnish_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_West_African
-		trigger = {
-			religion_openly_west_african_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_west_african_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_Tengri
-		trigger = {
-			religion_openly_tengri_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_tengri_or_reformed_trigger = yes }
 	}
 	text = {
 		localisation_key = String_Zun
-		trigger = {
-			religion_openly_zun_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_zun_or_reformed_trigger = yes }
 	}
 }
 
@@ -9803,7 +9770,7 @@ defined_text = {
 		trigger = {
 			OR = {
 				is_learned_trigger = yes
-				tier = EMPEROR
+				real_tier = EMPEROR
 			}
 		}
 	}
@@ -9941,19 +9908,19 @@ defined_text = {
 		}
 	}
 	text = {
-		trigger = { higher_tier_than = DUKE }
+		trigger = { higher_real_tier_than = DUKE }
 		localisation_key = String_great
 	}
 	text = {
-		trigger = { higher_tier_than = DUKE }
+		trigger = { higher_real_tier_than = DUKE }
 		localisation_key = String_eminent
 	}
 	text = {
-		trigger = { tier = EMPEROR }
+		trigger = { real_tier = EMPEROR }
 		localisation_key = String_exalted
 	}
 	text = {
-		trigger = { tier = EMPEROR }
+		trigger = { real_tier = EMPEROR }
 		localisation_key = String_magnificent
 	}
 	text = {
@@ -9970,7 +9937,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = COUNT
+				real_tier = COUNT
 			}
 		}
 	}
@@ -9979,7 +9946,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = DUKE
+				real_tier = DUKE
 			}
 		}
 	}
@@ -9988,7 +9955,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = KING
+				real_tier = KING
 				is_nomadic = no
 			}
 		}
@@ -9998,7 +9965,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = EMPEROR
+				real_tier = EMPEROR
 				is_nomadic = no
 			}
 		}
@@ -10008,7 +9975,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = KING
+				real_tier = KING
 				is_nomadic = yes
 			}
 		}
@@ -10018,7 +9985,7 @@ defined_text = {
 
 		trigger = {
 			FROM = {
-				tier = EMPEROR
+				real_tier = EMPEROR
 				is_nomadic = yes
 			}
 		}
@@ -11287,7 +11254,6 @@ defined_text = {
 	}
 }
 
-
 defined_text = {
 	name = GetWesternZodiacSign
 	use_first_valid = yes
@@ -11386,7 +11352,6 @@ defined_text = {
 	}
 }
 
-
 # Includes both definite and non-definite texts.
 # Use as a self-contained object in your sentence.
 # (We were debating [GetHermeticDebateSubject].)
@@ -11444,7 +11409,6 @@ defined_text = {
 		localisation_key = String_the_laws_of_the_stars
 	}
 }
-
 
 defined_text = {
 	name = GetSillyDebateSubject
@@ -12572,7 +12536,6 @@ defined_text = {
 	# Pirates?
 	# Disdain for traders
 }
-
 
 # Example: "I had a lovely conversation with myself the other day! I and [Root.GetFirstName] spoke for hours about [GetRootMatchingPersonalityStreak]."
 defined_text = {
@@ -13984,7 +13947,6 @@ defined_text = {
 	}
 }
 
-
 defined_text = {
 	name = GetRegionalBigAnimal
 	use_first_valid = yes
@@ -13996,7 +13958,7 @@ defined_text = {
 				OR = {
 					region = world_europe_south
 					region = world_europe_west
-					region = world_asia_minor
+					region = world_middle_east_asia_minor
 				}
 			}
 		}
@@ -14020,7 +13982,7 @@ defined_text = {
 			capital_scope = {
 				OR = {
 					region = world_india
-					region = world_persia
+					region = world_middle_east_persia
 				}
 			}
 		}
@@ -14052,7 +14014,7 @@ defined_text = {
 				OR = {
 					region = world_europe_south
 					region = world_europe_west
-					region = world_asia_minor
+					region = world_middle_east_asia_minor
 				}
 			}
 		}
@@ -14076,7 +14038,7 @@ defined_text = {
 			capital_scope = {
 				OR = {
 					region = world_india
-					region = world_persia
+					region = world_middle_east_persia
 				}
 			}
 		}
@@ -14111,7 +14073,7 @@ defined_text = {
 					region = world_steppe
 					region = world_europe_south
 					region = world_europe_west
-					region = world_asia_minor
+					region = world_middle_east_asia_minor
 				}
 			}
 		}
@@ -14122,7 +14084,7 @@ defined_text = {
 			capital_scope = {
 				OR = {
 					region = world_india
-					region = world_persia
+					region = world_middle_east_persia
 				}
 			}
 		}
@@ -16742,7 +16704,7 @@ defined_text = {
 	text = {
 		localisation_key = String_they_are_higher_tier
 		trigger = {
-			higher_tier_than = ROOT
+			higher_real_tier_than = ROOT
 			NOR = {
 				is_married = ROOT
 				is_lover = ROOT
@@ -16853,7 +16815,7 @@ defined_text = {
 	text = {
 		localisation_key = String_a_lowly_offer
 		trigger = {
-			higher_tier_than = ROOT
+			higher_real_tier_than = ROOT
 			NOR = {
 				is_married = ROOT
 				is_lover = ROOT
@@ -17941,18 +17903,12 @@ defined_text = {
 	}
 }
 
-
 defined_text = {
 	name = GetHaruspexName
 	use_first_valid = yes
 
 	text = {
-		trigger = {
-			FROMFROM = {
-				is_alive = yes
-				NOT = { character = ROOT }
-			}
-		}
+		trigger = { event_target:diviner = { always = yes } }
 		localisation_key = string_named_diviner
 	}
 	text = {
@@ -17967,7 +17923,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_peaceful
+				religion_is_peaceful_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_peaceful
@@ -17975,7 +17931,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_warlike
+				religion_is_warlike_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_warlike
@@ -17983,7 +17939,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_defensive
+				religion_is_defensive_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_defensive
@@ -17991,7 +17947,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_proselytizing
+				religion_is_proselytizing_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_proselytizing
@@ -17999,7 +17955,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_dogmatic
+				religion_is_dogmatic_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_dogmatic
@@ -18007,7 +17963,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_cosmopolitan
+				religion_is_cosmopolitan_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_cosmopolitan
@@ -18022,10 +17978,8 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				religion = norse_pagan_reformed
-				NOR = {
-					has_religion_feature = religion_matriarchal
-					has_religion_feature = religion_equal
-				}
+				religion_is_matriarchal_trigger = no
+				religion_is_equal_trigger = no
 			}
 		}
 		localisation_key = string_reformed_religion_norse
@@ -18035,8 +17989,8 @@ defined_text = {
 			ROOT = {
 				religion = norse_pagan_reformed
 				OR = {
-					has_religion_feature = religion_matriarchal
-					has_religion_feature = religion_equal
+					religion_is_matriarchal_trigger = yes
+					religion_is_equal_trigger = yes
 				}
 			}
 		}
@@ -18123,7 +18077,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_temporal_head
+				religion_has_temporal_head_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_temporal_head
@@ -18131,7 +18085,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_theocratic_head
+				religion_has_theocratic_head_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_theocratic_head
@@ -18139,7 +18093,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_autocephaly
+				religion_has_autocephaly_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_autocephaly
@@ -18147,7 +18101,7 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				has_religion_feature = religion_no_leader
+				religion_has_no_leader_trigger = yes
 			}
 		}
 		localisation_key = string_reformed_religion_no_leader
@@ -18776,7 +18730,6 @@ defined_text = {
 		localisation_key = string_rock
 	}
 }
-
 
 defined_text = {
 	name = GetNature
@@ -20133,7 +20086,7 @@ defined_text = {
 					region = world_middle_east
 					region = world_africa
 					region = world_steppe
-					region = world_asia_minor
+					region = world_middle_east_asia_minor
 				}
 			}
 		}
@@ -20155,9 +20108,7 @@ defined_text = {
 	use_first_valid = yes
 
 	text = {
-		trigger = {
-			religion_openly_norse_or_reformed_trigger = yes
-		}
+		trigger = { religion_openly_norse_or_reformed_trigger = yes }
 		localisation_key = tooltip_cultural_pirate_viking
 	}
 	text = {
@@ -20168,26 +20119,7 @@ defined_text = {
 	name = GetPiratingFeature
 
 	text = {
-		trigger = {
-			OR = {
-				FROM = {
-					NOT = { has_selected_religion_feature = religion_peaceful }
-					has_selected_religion_feature = religion_seafaring
-				}
-				ROOT = {
-					NOT = { has_selected_religion_feature = religion_peaceful }
-					has_selected_religion_feature = religion_seafaring
-				}
-			}
-			NOR = {
-				FROM = {
-					religion_openly_norse_or_reformed_trigger = yes
-				}
-				ROOT = {
-					religion_openly_norse_or_reformed_trigger = yes
-				}
-			}
-		}
+		trigger = { has_selected_religion_feature = religion_seafaring }
 		localisation_key = tooltip_religion_feature_pirating_desc
 	}
 }
@@ -20683,7 +20615,7 @@ defined_text = {
 	use_first_valid = yes
 
 	text = {
-		trigger = { has_religion_feature = religion_matriarchal }
+		trigger = { religion_is_matriarchal_trigger = yes }
 		localisation_key = string_Matriarchal
 	}
 	text = {
@@ -21411,7 +21343,6 @@ defined_text = {
 		}
 	}
 }
-
 
 defined_text = {
 	name = GetArtifactStorage

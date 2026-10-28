@@ -2169,7 +2169,7 @@ narrative_event = {
 					OR = {
 						region = world_europe_west
 						region = world_europe_south
-						region = world_middle_east_jerusalem
+						region = world_middle_east_levant
 						region = world_africa_north
 					}
 				}
@@ -2407,7 +2407,6 @@ letter_event = {
 			character = FROM
 			NOT = { war_with = ROOT }
 		}
-
 
 		NOR = {
 			has_character_flag = asked_to_pledge
@@ -3262,7 +3261,7 @@ character_event = {
 			limit = {
 				religion = ROOT
 				is_adult = yes
-				higher_tier_than = BARON
+				higher_real_tier_than = BARON
 				mercenary = no
 				in_alternate_crusade_trigger = no
 
@@ -3436,7 +3435,7 @@ letter_event = {
 			years = 5
 		}
 
-		reverse_remove_favor = ROOT
+		reverse_remove_favor = FROM
 	}
 
 	option = {
@@ -3920,7 +3919,7 @@ narrative_event = {
 				event_target:beneficiary_check_crusader_beneficiary = {
 					is_alive = yes
 					ai = yes
-					num_of_count_titles >= 1
+					is_playable = yes
 				}
 			}
 
@@ -4220,12 +4219,12 @@ character_event = {
 			}
 
 			preferred_limit = {
-				tier = DUKE
+				real_tier = DUKE
 				ai_zeal >= 20
 			}
 
 			preferred_limit = {
-				tier = DUKE
+				real_tier = DUKE
 				ai_zeal >= 15
 			}
 
@@ -4347,12 +4346,12 @@ character_event = {
 				}
 
 				preferred_limit = {
-					tier = DUKE
+					real_tier = DUKE
 					ai_zeal >= 20
 				}
 
 				preferred_limit = {
-					tier = DUKE
+					real_tier = DUKE
 					ai_zeal >= 15
 				}
 
@@ -4502,7 +4501,7 @@ character_event = {
 					ai = yes
 
 					trigger_if = {
-						limit = { higher_tier_than = DUKE }
+						limit = { higher_real_tier_than = DUKE }
 						ai_zeal >= -10
 					}
 					trigger_else = {

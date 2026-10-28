@@ -2,7 +2,6 @@
 
 # Add the decisions in a nice order which will make sense in the menu! For example, ranked by cost/reward.
 
-
 # PAYING TRIBUTE DECISIONS (GAIN GRACE)
 offmap_decisions = {
 
@@ -4157,7 +4156,9 @@ offmap_decisions = {
 
 			mult_modifier = {
 				factor = 0.1
-				NOT = { trait = greedy }
+				FROM = {
+					NOT = { trait = greedy }
+				}
 			}
 		}
 	}
@@ -4416,7 +4417,7 @@ offmap_decisions = {
 			FROM = {
 				show_scope_change = no
 
-				higher_tier_than = COUNT
+				higher_real_tier_than = COUNT
 				has_grace_massive_trigger = yes
 
 				custom_tooltip = {
@@ -5314,7 +5315,6 @@ offmap_decisions = {
 				show_scope_change = no
 
 				independent = yes
-				in_revolt = no
 
 				NOT = {
 					is_tributary = {
@@ -5327,8 +5327,10 @@ offmap_decisions = {
 					custom_tooltip = { # Borders the Western Protectorate
 						text = chinese_grace_become_tributary_allow_governor_neighbor_tt
 
-						any_neighbor_independent_ruler = {
-							has_landed_title = e_china_west_governor
+						e_china_west_governor = {
+							holder_scope = {
+								shares_realm_border_with = ROOT_FROM
+							}
 						}
 					}
 

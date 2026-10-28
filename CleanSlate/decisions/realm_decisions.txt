@@ -211,7 +211,7 @@ decisions = {
 				demesne_size >= 3
 
 				any_demesne_title = {
-					tier = COUNT
+					real_tier = COUNT
 					can_be_given_away = yes
 
 					location = {
@@ -242,7 +242,7 @@ decisions = {
 
 				random_demesne_title = {
 					limit = {
-						tier = COUNT
+						real_tier = COUNT
 						can_be_given_away = yes
 
 						location = {
@@ -398,6 +398,7 @@ decisions = {
 
 		potential = {
 			has_landed_title = e_byzantium
+			is_feudal = yes
 			has_dlc = "Legacy of Rome"
 
 			OR = {
@@ -662,7 +663,7 @@ decisions = {
 				b_tivoli = {
 					make_capital_holding = yes
 					usurp_title = ROOT
-					set_name = Rome
+					set_name = b_roma
 				}
 
 				capital = b_tivoli
@@ -1416,7 +1417,6 @@ decisions = {
 					}
 
 				}
-
 			}
 		}
 
@@ -1738,7 +1738,7 @@ decisions = {
 
 				any_title = {
 					limit = {
-						tier = KING
+						real_tier = KING
 						region = world_india
 					}
 					de_jure_liege = e_india
@@ -1850,6 +1850,7 @@ decisions = {
 
 		potential = {
 			independent = yes
+			is_feudal = yes
 
 			OR = {
 				culture = german
@@ -1887,7 +1888,7 @@ decisions = {
 					text = FORM_THE_HRE_TT
 
 					any_demesne_title = {
-						tier = KING
+						real_tier = KING
 						NOT = { title = k_germany }
 					}
 				}
@@ -1980,6 +1981,7 @@ decisions = {
 
 		potential = {
 			independent = yes
+			is_feudal = yes
 			is_random_world = no
 
 			OR = {
@@ -2164,7 +2166,7 @@ decisions = {
 					}
 				}
 
-				scaled_wealth = 2
+				scaled_wealth >= 2
 			}
 		}
 
@@ -2389,6 +2391,8 @@ decisions = {
 		}
 
 		effect = {
+			capital_scope = { save_event_target_as = current_capital }
+
 			primary_title = {
 				show_scope_change = no
 
@@ -2404,6 +2408,7 @@ decisions = {
 				new_title = {
 					copy_title_history = PREV
 					save_event_target_as = new_kingdom
+					set_preferred_capital = event_target:current_capital
 				}
 
 				hidden_effect = {
@@ -2446,6 +2451,7 @@ decisions = {
 						any_title_under = {
 							limit = {
 								real_tier = COUNT
+								duchy = { capital_scope = { province = PREVPREV } } # Only check each duchy's de jure capital
 
 								dejure_liege_title = {
 									kingdom = {
@@ -2476,6 +2482,7 @@ decisions = {
 							any_title_under = {
 								limit = {
 									real_tier = COUNT
+									duchy = { capital_scope = { province = PREVPREV } } # Only check each duchy's de jure capital
 
 									dejure_liege_title = {
 										NOT = { de_jure_liege_or_above = event_target:new_kingdom }
@@ -2633,7 +2640,11 @@ decisions = {
 		}
 
 		effect = {
+			capital_scope = { save_event_target_as = current_capital }
+
 			primary_title = {
+				show_scope_change = no
+
 				create_title = {
 					tier = EMPEROR
 					custom_created = yes
@@ -2646,6 +2657,7 @@ decisions = {
 				new_title = {
 					copy_title_history = PREV
 					save_event_target_as = new_empire
+					set_preferred_capital = event_target:current_capital
 				}
 
 				hidden_effect = {
@@ -2914,7 +2926,7 @@ decisions = {
 
 			if = {
 				limit = {
-					higher_tier_than = KING
+					higher_real_tier_than = KING
 					NOT = { has_dlc = "Conclave" }
 				}
 
@@ -2926,7 +2938,7 @@ decisions = {
 			hidden_effect = {
 				any_demesne_title = {
 					limit = {
-						tier = BARON
+						real_tier = BARON
 						holding_type = tribal
 					}
 
@@ -3039,7 +3051,7 @@ decisions = {
 						holder_scope = {
 							OR = {
 								character = ROOT
-								is_liege_or_above = ROOT
+								is_vassal_or_below_of = ROOT
 							}
 						}
 					}
@@ -3103,7 +3115,7 @@ decisions = {
 					limit = {
 						capital_holding = {
 							holding_type = tribal
-							ROOT = { NOT = { tier = BARON } }
+							ROOT = { NOT = { real_tier = BARON } }
 						}
 
 						capital_scope = {
@@ -3113,7 +3125,7 @@ decisions = {
 								holder_scope = {
 									OR = {
 										character = ROOT
-										is_liege_or_above = ROOT
+										is_vassal_or_below_of = ROOT
 									}
 								}
 							}
@@ -3128,7 +3140,7 @@ decisions = {
 								holder_scope = {
 									OR = {
 										character = ROOT
-										is_liege_or_above = ROOT
+										is_vassal_or_below_of = ROOT
 									}
 								}
 							}
@@ -3147,7 +3159,7 @@ decisions = {
 
 				any_demesne_title = {
 					limit = {
-						tier = BARON
+						real_tier = BARON
 						holding_type = tribal
 
 						location = {
@@ -3350,7 +3362,7 @@ decisions = {
 
 							any_demesne_title = {
 								limit = {
-									tier = BARON
+									real_tier = BARON
 									holding_type = tribal
 								}
 
@@ -3441,7 +3453,7 @@ decisions = {
 
 				any_demesne_title = {
 					limit = {
-						tier = BARON
+						real_tier = BARON
 						holding_type = tribal
 					}
 

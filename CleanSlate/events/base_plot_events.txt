@@ -14,7 +14,6 @@
 # Assassination notification events			8250-8299
 #											7700-7999
 
-
 ###########################################
 # Blackmail
 ###########################################
@@ -280,7 +279,6 @@ letter_event = {
 		name = EVTOPTA7270
 	}
 }
-
 
 ###########################################
 # Drunken Plot Member
@@ -4408,7 +4406,7 @@ letter_event = {
 		any_demesne_title = {
 			limit = {
 				controls_religion = no
-				higher_tier_than = BARON
+				higher_real_tier_than = BARON
 
 				FROM = {
 					NAND = { # If the old liege can use the subjugation CB, give no claims
@@ -7472,7 +7470,7 @@ character_event = {
 #				real_tier = COUNT
 #
 #				any_demesne_title = {
-#					tier = COUNT
+#					real_tier = COUNT
 #					de_jure_liege = event_target:plot_title
 #				}
 #			}
@@ -7485,7 +7483,7 @@ character_event = {
 #				real_tier = COUNT
 #
 #				any_demesne_title = {
-#					tier = COUNT
+#					vtier = COUNT
 #					de_jure_liege = event_target:plot_title
 #				}
 #			}
@@ -7546,7 +7544,7 @@ character_event = {
 #				real_tier = COUNT
 #
 #				any_demesne_title = {
-#					tier = COUNT
+#					real_tier = COUNT
 #					de_jure_liege = event_target:plot_title
 #				}
 #			}
@@ -7559,7 +7557,7 @@ character_event = {
 #				real_tier = COUNT
 #
 #				any_demesne_title = {
-#					tier = COUNT
+#					real_tier = COUNT
 #					de_jure_liege = event_target:plot_title
 #				}
 #			}
@@ -7582,7 +7580,7 @@ character_event = {
 #					real_tier = COUNT
 #
 #					any_demesne_title = {
-#						tier = COUNT
+#						real_tier = COUNT
 #						de_jure_liege = event_target:plot_title
 #					}
 #				}
@@ -14289,7 +14287,6 @@ character_event = {
 	option = {
 		name = EVTOPTC7800 # Replace with own servants
 		tooltip_info = learning
-
 
 		trigger = {
 			plot_power >= 0.5

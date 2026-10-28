@@ -16,7 +16,6 @@ duchy_adventure = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -90,14 +89,6 @@ duchy_adventure = {
 						}
 					}
 				}
-			}
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -207,7 +198,6 @@ kingdom_adventure = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -498,14 +488,6 @@ kingdom_adventure = {
 				set_defacto_liege = attacker # Always go Independent
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_invalidation = {
@@ -661,20 +643,12 @@ manifest_destiny_invasion = {
 	}
 
 	can_use_title = {
-		empire = {
-			OR = {
-				title = e_persia
-				title = e_byzantium
-				title = e_arabia
-			}
-		}
+		region = world_middle_east
 
-		# Target must have at least 3 counties within the target kingdom
-		FROM = {
-			num_of_realm_counties = {
-				value >= 3
-				title = PREV
-			}
+		# Defender must have at least 3 counties within the target kingdom
+		num_title_realm_provs = {
+			value >= 3
+			who = FROM
 		}
 
 		# The attacker needs at least one county in the target kingdom, or a border
@@ -704,17 +678,14 @@ manifest_destiny_invasion = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -785,14 +756,6 @@ manifest_destiny_invasion = {
 				}
 			}
 		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-		}
 	}
 
 	on_fail = {
@@ -807,7 +770,6 @@ manifest_destiny_invasion = {
 
 			prestige = 100
 			participation_scaled_prestige = 100
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -847,7 +809,6 @@ manifest_destiny_invasion = {
 
 			prestige = 200
 			participation_scaled_prestige = 200
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {

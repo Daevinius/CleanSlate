@@ -619,7 +619,7 @@ character_event = {
 
 							ROOT = {
 								OR = {
-									has_religion_feature = religion_matriarchal
+									religion_is_matriarchal_trigger = yes
 									gender_equality_trigger = yes
 								}
 							}
@@ -815,7 +815,7 @@ character_event = {
 
 					ROOT = {
 						OR = {
-							has_religion_feature = religion_matriarchal
+							religion_is_matriarchal_trigger = yes
 							gender_equality_trigger = yes
 						}
 					}
@@ -840,7 +840,7 @@ character_event = {
 
 					ROOT = {
 						OR = {
-							has_religion_feature = religion_matriarchal
+							religion_is_matriarchal_trigger = yes
 							gender_equality_trigger = yes
 						}
 					}
@@ -1186,7 +1186,7 @@ character_event = {
 
 					ROOT = {
 						OR = {
-							has_religion_feature = religion_matriarchal
+							religion_is_matriarchal_trigger = yes
 							gender_equality_trigger = yes
 						}
 					}
@@ -1368,7 +1368,7 @@ character_event = {
 					OR = {
 						region = world_europe_south
 						region = world_europe_west
-						region = world_asia_minor
+						region = world_middle_east_asia_minor
 					}
 				}
 			}
@@ -1393,7 +1393,7 @@ character_event = {
 				capital_scope = {
 					OR = {
 						region = world_india
-						region = world_persia
+						region = world_middle_east_persia
 					}
 				}
 			}
@@ -1656,7 +1656,6 @@ narrative_event = {
 	picture = GFX_evt_mysterious_forest
 	border = GFX_event_narrative_frame_war
 
-
 	desc = {
 		text = EVTDESC_WoL_5007_fearsome
 		trigger = {
@@ -1691,7 +1690,7 @@ narrative_event = {
 					OR = {
 						region = world_europe_south
 						region = world_europe_west
-						region = world_asia_minor
+						region = world_middle_east_asia_minor
 					}
 				}
 			}
@@ -1715,7 +1714,7 @@ narrative_event = {
 				capital_scope = {
 					OR = {
 						region = world_india
-						region = world_persia
+						region = world_middle_east_persia
 					}
 				}
 			}

@@ -3935,19 +3935,6 @@ character_event = {
 				factor = 0.1
 
 				any_war = {
-					using_cb = religious
-
-					attacker = {
-						character = ROOT
-						religion_group = pagan_group
-					}
-				}
-			}
-
-			mult_modifier = {
-				factor = 0.1
-
-				any_war = {
 					using_cb = viking_invasion
 
 					attacker = {
@@ -4440,19 +4427,6 @@ character_event = {
 
 					attacker = {
 						character = ROOT
-					}
-				}
-			}
-
-			mult_modifier = {
-				factor = 0.1
-
-				any_war = {
-					using_cb = religious
-
-					attacker = {
-						character = ROOT
-						religion_group = pagan_group
 					}
 				}
 			}
@@ -5005,7 +4979,6 @@ character_event = {
 				add_trait = sympathy_pagans
 			}
 		}
-
 
 		# Workaround for automatic usurpation of theocratic characters
 		FROM = {
@@ -6512,6 +6485,8 @@ character_event = {
 
 		# Workaround for automatic usurpation of theocratic characters
 		FROMFROM = {
+			save_event_target_as = religious_branch_target
+
 			religion_scope = {
 				save_event_target_as = target_religion
 			}
@@ -6520,8 +6495,8 @@ character_event = {
 		convert_religion_failsafe_effect = yes
 
 		if = {
-			limit = { religion_group = indian_group }
-			character_event = { id = RoI.120 } # Assign Indian religion branch
+			limit = { has_dharmic_religion_trigger = yes }
+			copy_religious_branch_from_target_effect = yes
 		}
 
 		if = {
@@ -7158,7 +7133,6 @@ character_event = {
 		remove_character_modifier = school_zhengyi
 	}
 }
-
 
 # The birth of the Order of St Anthony (Alternate)
 narrative_event = {

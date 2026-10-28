@@ -62,7 +62,6 @@ excommunicated_ruler = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -290,7 +289,6 @@ depose_antipope = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -704,8 +702,6 @@ shepherds_crusade_invasion = {
 					40 = { give_nickname = nick_the_sword_of_god }
 				}
 			}
-
-			check_if_reconquista_finished_effect = yes
 		}
 
 		any_player = {
@@ -1158,12 +1154,10 @@ childrens_crusade = {
 	}
 
 	is_valid_title = {
-		# Defender
-		FROM = {
-			num_of_realm_counties = {
-				value >= 1
-				title = PREV
-			}
+		# Defender must have at least 1 county within the target kingdom
+		num_title_realm_provs = {
+			value >= 1
+			who = FROM
 		}
 	}
 
@@ -1225,7 +1219,6 @@ childrens_crusade = {
 			narrative_event = { id = HF.25824 } # Notify infidels that the children have arrived
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1398,7 +1391,7 @@ childrens_crusade = {
 				}
 
 				if = {
-					limit = { can_apply_super_cool_nickname_trigger = yes }
+					limit = { can_apply_cool_nickname_trigger = yes }
 
 					random_list = {
 						20 = {
@@ -1572,8 +1565,6 @@ childrens_crusade = {
 				limit = { uses_decadence = yes }
 				participation_scaled_decadence = -100
 			}
-
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -1782,7 +1773,6 @@ pepin_religious = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -2373,7 +2363,6 @@ depose_impious_pope = {
 				narrative_event = { id = HF.40095 } # The Pope wins
 			}
 		}
-
 	}
 
 	on_attacker_leader_death = {

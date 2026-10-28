@@ -29,10 +29,10 @@ claim = {
 			# Gender requirements
 			trigger_if = {
 				limit = { is_female = yes }
-				NOT = { has_religion_feature = religion_patriarchal }
+				religion_is_patriarchal_trigger = no
 			}
 			trigger_else = {
-				NOT = { has_religion_feature = religion_matriarchal }
+				religion_is_matriarchal_trigger = no
 			}
 
 			OR = {
@@ -60,20 +60,16 @@ claim = {
 									ROOT = { is_female = yes }
 									holder_scope = {
 										is_female = yes
-										NOR = {
-											has_religion_feature = religion_matriarchal
-											has_religion_feature = religion_equal
-											has_religion_feature = religion_feature_bon
-											has_law = status_of_women_4
-										}
+										religion_is_matriarchal_trigger = no
+										religion_is_equal_trigger = no
+										NOT = { has_law = status_of_women_4 }
 									}
 								}
 								ROOT = {
 									OR = {
 										has_law = status_of_women_4
-										has_religion_feature = religion_matriarchal
-										has_religion_feature = religion_equal
-										has_religion_feature = religion_feature_bon
+										religion_is_matriarchal_trigger = yes
+										religion_is_equal_trigger = yes
 									}
 								}
 							}
@@ -120,7 +116,6 @@ claim = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -183,12 +178,6 @@ claim = {
 				}
 
 				conquest_culture = attacker
-			}
-
-			check_war_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -405,7 +394,6 @@ claim_all = {
 			}
 		}
 
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -478,8 +466,6 @@ claim_all = {
 					}
 				}
 			}
-
-			roman_victory_triumph_effect = yes
 		}
 
 		any_attacker = {
@@ -488,12 +474,6 @@ claim_all = {
 		}
 
 		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-
 			if = {
 				limit = {
 					has_character_flag = is_otto
@@ -590,7 +570,6 @@ claim_all = {
 			show_scope_change = no
 
 			participation_scaled_prestige = 200
-			roman_victory_triumph_effect = yes
 		}
 
 		any_defender = {
@@ -724,7 +703,6 @@ claim_on_liege = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -841,12 +819,6 @@ claim_on_liege = {
 				}
 
 				conquest_culture = attacker
-			}
-
-			check_war_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -1013,8 +985,6 @@ claim_on_liege_plot = {
 
 	on_add = {
 		log = "CB(claim_on_liege_plot): START: [Root.GetTitledFirstName] of [Root.PrimaryTitle.GetBaseName] (ID: [Root.GetID]) vs. [From.GetTitledFirstName] of [From.PrimaryTitle.GetBaseName] (ID: [From.GetID])"
-
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1101,7 +1071,6 @@ claim_on_liege_plot = {
 			hidden_effect = {
 				disband_event_forces = faction_revolters
 				disband_event_forces = faction_loyalists
-				landless_pope_effect = yes
 			}
 		}
 
@@ -1113,10 +1082,6 @@ claim_on_liege_plot = {
 				disband_event_forces = faction_revolters
 			}
 		}
-	}
-
-	on_fail_title = {
-		check_war_effect = yes
 	}
 
 	on_reverse_demand = {
@@ -1233,10 +1198,6 @@ claim_on_vassal_plot = {
 		}
 	}
 
-	on_add = {
-		fire_haruspicy_event_effect = yes
-	}
-
 	on_success = {
 		attacker = {
 			show_scope_change = no
@@ -1256,14 +1217,6 @@ claim_on_vassal_plot = {
 			show_scope_change = no
 
 			plot_succeeds = yes
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
 		}
 	}
 
@@ -1406,7 +1359,7 @@ other_claim = {
 						succ_law_title = { has_law = agnatic_succession }
 					}
 
-					has_religion_feature = religion_patriarchal
+					religion_is_patriarchal_trigger = yes
 				}
 			}
 			trigger_else = {
@@ -1418,7 +1371,7 @@ other_claim = {
 						succ_law_title = { has_law = enatic_succession }
 					}
 
-					has_religion_feature = religion_matriarchal
+					religion_is_matriarchal_trigger = yes
 				}
 			}
 
@@ -1530,7 +1483,6 @@ other_claim = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -1761,13 +1713,6 @@ other_claim = {
 				}
 
 				conquest_culture = ROOT
-			}
-
-			# Reconquista stuff
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -2001,7 +1946,6 @@ other_claim_on_liege = {
 	# FROM is defender
 	# FROMFROM is attacker
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -2151,12 +2095,6 @@ other_claim_on_liege = {
 		}
 
 		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
-
 			if = {
 				limit = {
 					higher_real_tier_than = BARON

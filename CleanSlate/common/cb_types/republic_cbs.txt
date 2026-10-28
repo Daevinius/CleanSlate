@@ -52,11 +52,25 @@ coastal_republic = {
 				# Or the city is in a rival republic (possibly in the same realm)
 				PREV = {
 					holder_scope = {
-						is_patrician = yes
+						# CleanSlate: No more protection for cities indirectly held by patricians
+						OR = {
+							is_patrician = yes
+							any_liege = { is_patrician = yes }
+						}
 
 						NOR = {
 							is_vassal_or_below_of = ROOT
 							is_liege_or_above_of = ROOT
+						}
+					}
+
+					# CleanSlate: Only outposts
+					county = {
+						holder_scope = {
+							NOR = {
+								character = FROM
+								is_vassal_or_below_of = FROM
+							}
 						}
 					}
 				}
@@ -123,7 +137,6 @@ coastal_republic = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -349,7 +362,6 @@ coastal_county_republic = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -392,14 +404,6 @@ coastal_county_republic = {
 		any_attacker = {
 			limit = { NOT = { character = attacker } }
 			hidden_effect = { participation_scaled_prestige = 100 }
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
 		}
 	}
 
@@ -522,7 +526,6 @@ embargo_cb = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -738,7 +741,13 @@ seize_trade_post = {
 			}
 		}
 
-		NOT = { holder = FROM }
+		# Can't hold trade posts inside another republic, enforced by hardcoding
+		holder_scope = {
+			NOR = {
+				character = FROM
+				is_vassal_or_below_of = FROM
+			}
+		}
 	}
 
 	is_valid = {
@@ -763,11 +772,15 @@ seize_trade_post = {
 			}
 		}
 
-		NOT = { holder = FROM }
+		holder_scope = {
+			NOR = {
+				character = FROM
+				is_vassal_or_below_of = FROM
+			}
+		}
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 

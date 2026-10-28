@@ -302,7 +302,7 @@ targeted_decisions = {
 					NOT = {
 						any_player = {
 							dynasty = ROOT
-							higher_tier_than = ROOT
+							higher_real_tier_than = ROOT
 							same_realm = ROOT
 						}
 					}
@@ -338,8 +338,7 @@ targeted_decisions = {
 					}
 				}
 
-				has_religion_feature = religion_monastic
-				has_religion_feature = religion_feature_west_african
+				religion_is_monastic_trigger = yes
 			}
 		}
 

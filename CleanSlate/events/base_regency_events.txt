@@ -2341,14 +2341,14 @@ character_event = {
 
 			liege = {
 				OR = {
-					has_religion_feature = religion_matriarchal
+					religion_is_matriarchal_trigger = yes
 					gender_equality_trigger = yes
 				}
 			}
 		}
 		trigger_else = {
 			liege = {
-				NOT = { has_religion_feature = religion_matriarchal }
+				religion_is_matriarchal_trigger = no
 			}
 		}
 
@@ -3677,8 +3677,6 @@ character_event = {
 #				id = 61232
 #				tooltip = EVTTOOLTIP61232
 #			}
-#
-# 			clear_event_target = duelist_courtier
 # 		}
 #
 # 		prestige = 20
@@ -3726,10 +3724,6 @@ character_event = {
 #
 # 		prestige = 20
 # 	}
-#
-#	after = {
-# 		clear_event_target = duelist_courtier
-#	}
 # }
 
 ## Regent loses, is maimed.
@@ -4152,7 +4146,7 @@ character_event = {
 			NOT = { has_character_flag = regent_lowered_CA }
 
 			any_demesne_title = {
-				higher_tier_than = DUKE
+				higher_real_tier_than = DUKE
 
 				OR = {
 					has_law = crown_authority_1
@@ -4207,7 +4201,7 @@ character_event = {
 
 			random_demesne_title = {
 				limit = {
-					higher_tier_than = DUKE
+					higher_real_tier_than = DUKE
 
 					OR = {
 						has_law = crown_authority_1

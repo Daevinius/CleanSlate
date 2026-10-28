@@ -675,7 +675,7 @@ narrative_event = {
 				ai = no
 				is_ironman = yes
 				culture_group = east_slavic
-				higher_tier_than = DUKE
+				higher_real_tier_than = DUKE
 
 				capital_scope = {
 					region = world_europe_east
@@ -3364,7 +3364,6 @@ long_character_event = {
 	}
 }
 
-
 # Other True Believers join the cause
 letter_event = {
 	id = HF.20030
@@ -5024,7 +5023,6 @@ letter_event = {
 			who = FROM
 			years = 10
 		}
-
 
 		FROM = {
 			letter_event = {

@@ -245,7 +245,6 @@ character_event = {
 		}
 	}
 
-
 	option = {
 		name = EXCELLENT
 
@@ -1137,7 +1136,6 @@ character_event = {
 	}
 }
 
-
 # Duelist
 character_event = {
 	id = RoI.3112
@@ -1465,7 +1463,7 @@ character_event = {
 			prestige = -100
 			piety = -100
 			remove_trait = brahmin
-			remove_trait = vaishya
+			add_trait = vaishya
 		}
 	}
 

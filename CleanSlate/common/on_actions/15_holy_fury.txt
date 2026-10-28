@@ -1,18 +1,13 @@
 # Character scope
 on_startup = {
 	events = {
-		HF.1     # Set up Great Conquerors for Shattered World
-		HF.2     # Set up Primogeniture in Shattered World
-		HF.5     # Alternate Start General maintenance
 		HF.20372 # Apply crowned_by_traits
-		HF.23205 # Altstart Dogmatic/Cosmopolitan effects
 		HF.25057 # Give West African Grand Masters some Masks
 		HF.23472 # Add Irminsul special building on Charlemagne start
 		HF.23035 # Status of Women cleanup for customized religions on Random Start
 		HF.25070 # Add Tattoos to landless starting Warrior Lodge members of high ranks
 		HF.15099 # Setup rain in African regions
 		HF.23776 # Assign African tattoos
-		HF.23778 # Setting up god-emperors on Altstart
 
 		HFP.30031 # Set up freckles
 		HFP.40028 # Remove child traits
@@ -21,6 +16,18 @@ on_startup = {
 		HFP.23028 # Cleanup Monemvasia if Hellenism rule is off
 		HFP.24120 # Setup Princely Elector Titles
 		HFP.11051 # Hidden event to give commanders (who do not have it already) the commander bonus
+	}
+}
+
+# Triggers if the game is started with Random/Shattered World. Fires at the very end of game setup (just before the Welcome screen is shown)
+# ROOT is the very first character generated (events need a character to work)
+on_alternate_start = {
+	events = {
+		HF.1     # Set up Great Conquerors for Shattered World
+		HF.2     # Set up Primogeniture in Shattered World
+		HF.5     # Alternate Start General maintenance
+		HF.23205 # Altstart Dogmatic/Cosmopolitan effects
+		HF.23778 # Setting up god-emperors on Altstart
 	}
 }
 
@@ -418,11 +425,15 @@ on_new_holder = {
 	events = {
 		HF.25510 # Clear loot province mission if province has fallen under your control
 		# HF.49205 # Reconquista Beneficiary
+		HF.49452 # Check if Reconquista is finished yet
 		HF.23779 # Setting up next god-emperor
 
 		HFP.41053 # Check Beneficiaries
 		HFP.42002 # Check titular Crusader titles
-		HFP.40033 # Romagna / Papacy check
+		HFP.44000 # Knights Hospitaller asks to receive an island
+		HFP.44005 # The Teutonic Order asks for land
+		HFP.40033 # Romagna / Papal States usurpation
+		HFP.44036 # Pope loses all lands, k_papal_state turns into k_romagna
 		HFP.19100 # Make sure the Varangian guard handles its inheritance if not male-lead
 	}
 
@@ -448,12 +459,16 @@ on_new_holder_inheritance = {
 	events = {
 		HF.25510 # Clear loot province mission if province has fallen under your control
 		# HF.49205 # Reconquista Beneficiary
+		HF.49452 # Check if Reconquista is finished yet
 		HF.23779 # Setting up next god-emperor
 		HF.20407 # Inherit special crowns on abdication
 
 		HFP.41087 # Makes sure the Holy Orders doesn't get any part of the pot
 		HFP.42002 # Check titular Crusader titles
-		HFP.40033 # Romagna / Papacy check
+		HFP.44000 # Knights Hospitaller asks to receive an island
+		HFP.44005 # The Teutonic Order asks for land
+		HFP.40033 # Romagna / Papal States usurpation
+		HFP.44036 # Pope loses all lands, k_papal_state turns into k_romagna
 		HFP.19100 # Make sure the Varangian guard handles its inheritance if not male-lead
 	}
 }
@@ -466,10 +481,14 @@ on_new_holder_usurpation = {
 		HF.20414 # Hidden check to move special crowns to holder of the title they are tied to
 		HF.25510 # Clear loot province mission if province has fallen under your control
 		# HF.49205 # Reconquista Beneficiary
+		HF.49452 # Check if Reconquista is finished yet
 		HF.20417 # Clear uncrowned modifier
 
 		HFP.42002 # Check titular Crusader titles
-		HFP.40033 # Romagna / Papacy check
+		HFP.44000 # Knights Hospitaller asks to receive an island
+		HFP.44005 # The Teutonic Order asks for land
+		HFP.40033 # Romagna / Papal States usurpation
+		HFP.44036 # Pope loses all lands, k_papal_state turns into k_romagna
 		HFP.19100 # Make sure the Varangian guard handles its inheritance if not male-lead
 	}
 }
@@ -509,8 +528,9 @@ on_character_convert_religion = {
 # ROOT is defender
 on_war_started = {
 	events = {
-		HF.24013 # Corsair ships for special bloodline
+		HF.23005 # Haruspicy divination
 		HF.23803 # Interrupt Great Tribal Festival
+		HF.24013 # Corsair ships for special bloodline
 		HF.24021 # Reset peaceful_years variable for Forged Bloodlines
 		HF.50000 # Ask Warrior Lodge member for help in war
 	}

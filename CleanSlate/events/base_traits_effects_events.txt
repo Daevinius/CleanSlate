@@ -1941,7 +1941,7 @@ character_event = {
 				limit = { is_female = yes }
 
 				OR = {
-					has_religion_feature = religion_matriarchal
+					religion_is_matriarchal_trigger = yes
 					gender_equality_trigger = yes
 				}
 			}
@@ -1985,7 +1985,7 @@ character_event = {
 					limit = { is_female = yes }
 
 					OR = {
-						has_religion_feature = religion_matriarchal
+						religion_is_matriarchal_trigger = yes
 						gender_equality_trigger = yes
 					}
 				}
@@ -17112,7 +17112,6 @@ character_event = {
 		}
 	}
 
-
 	option = {
 		name = EVTOPTD3606
 
@@ -18644,8 +18643,8 @@ character_event = {
 		top_liege = {
 			any_realm_lord = {
 				OR = {
-					tier = DUKE
-					tier = COUNT
+					real_tier = DUKE
+					real_tier = COUNT
 				}
 
 				OR = {
@@ -18695,8 +18694,8 @@ character_event = {
 
 					any_province_lord = {
 						OR = {
-							tier = DUKE
-							tier = COUNT
+							real_tier = DUKE
+							real_tier = COUNT
 						}
 
 						OR = {
@@ -18739,8 +18738,8 @@ character_event = {
 
 				limit = {
 					OR = {
-						tier = DUKE
-						tier = COUNT
+						real_tier = DUKE
+						real_tier = COUNT
 					}
 
 					OR = {
@@ -19309,10 +19308,10 @@ character_event = {
 				id = 3646
 				days = 2
 				tooltip = EVTTOOLTIP3646
+				portrait = yes
 			}
 		}
 	}
-
 
 	option = {
 		name = EVTOPTB3645
@@ -19339,6 +19338,7 @@ character_event = {
 				id = 3646
 				days = 2
 				tooltip = EVTTOOLTIP3646
+				portrait = yes
 			}
 		}
 	}
@@ -19368,6 +19368,7 @@ character_event = {
 				id = 3646
 				days = 2
 				tooltip = EVTTOOLTIP3646
+				portrait = yes
 			}
 		}
 	}
@@ -19397,6 +19398,7 @@ character_event = {
 				id = 3646
 				days = 2
 				tooltip = EVTTOOLTIP3646
+				portrait = yes
 			}
 		}
 	}
@@ -19426,6 +19428,7 @@ character_event = {
 				id = 3646
 				days = 2
 				tooltip = EVTTOOLTIP3646
+				portrait = yes
 			}
 		}
 	}

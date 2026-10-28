@@ -986,7 +986,6 @@
 #	}
 # }
 
-
 ### The Hordes Convert ###
 
 # Ilkhanate converts to Catholic
@@ -3847,7 +3846,6 @@ narrative_event = {
 	}
 }
 
-
 ##################################
 # Rise of the Seljuks
 ##################################
@@ -4117,7 +4115,7 @@ character_event = {
 	only_capable = yes
 
 	trigger = {
-		lower_tier_than = KING
+		lower_real_tier_than = KING
 
 		NOR = {
 			trait = blinded
@@ -4620,7 +4618,6 @@ character_event = {
 	}
 }
 
-
 ##################################
 # Rise of the Timurids
 ##################################
@@ -4672,7 +4669,7 @@ character_event = {
 		is_alternate_start = no
 
 		any_realm_province = {
-			region = world_persia
+			region = world_middle_east_persia
 			held_under_PREV = yes
 		}
 	}
@@ -5471,7 +5468,6 @@ character_event = {
 		name = EVTOPTA60307
 	}
 }
-
 
 ##########################################
 # Rise of the Ghaznavids under Sabuktigin
@@ -6333,7 +6329,7 @@ narrative_event = {
 
 					any_demesne_title = {
 						limit = {
-							tier = EMPEROR
+							real_tier = EMPEROR
 							is_titular = yes
 							NOT = { title = e_mongol_empire }
 						}
@@ -7178,7 +7174,6 @@ character_event = {
 	}
 }
 
-
 ##################################
 # Rise of the Sultanate of Rum
 ##################################
@@ -7659,7 +7654,6 @@ character_event = {
 	}
 }
 
-
 #######################################
 # Stage 2 (Armenia) and 3 (Anatolia)
 # Fired from CB 'duchy_adventure' or 'kingdom_adventure'
@@ -7684,7 +7678,7 @@ character_event = {
 				limit = {
 					k_armenia = {
 						any_de_jure_vassal_title = {
-							tier = COUNT
+							real_tier = COUNT
 
 							holder_scope = {
 								top_liege = {
@@ -7704,7 +7698,7 @@ character_event = {
 				k_armenia = {
 					any_de_jure_vassal_title = {
 						limit = {
-							tier = COUNT
+							real_tier = COUNT
 
 							holder_scope = {
 								top_liege = {
@@ -7754,7 +7748,7 @@ character_event = {
 				limit = {
 					k_anatolia = {
 						any_de_jure_vassal_title = {
-							tier = COUNT
+							real_tier = COUNT
 
 							holder_scope = {
 								top_liege = {
@@ -7773,7 +7767,7 @@ character_event = {
 				k_anatolia = {
 					any_de_jure_vassal_title = {
 						limit = {
-							tier = COUNT
+							real_tier = COUNT
 
 							holder_scope = {
 								top_liege = {
@@ -7837,7 +7831,7 @@ character_event = {
 	is_triggered_only = yes # on_startup
 	hide_window = yes
 
-	only_playable = yes
+	only_independent = yes
 
 	trigger = {
 		is_landed = yes

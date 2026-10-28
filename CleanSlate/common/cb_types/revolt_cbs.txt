@@ -41,7 +41,6 @@ peasant_revolt = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -69,14 +68,6 @@ peasant_revolt = {
 			show_scope_change = no
 
 			prestige = -100
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
-			}
 		}
 	}
 
@@ -188,7 +179,6 @@ heretic_revolt = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -252,14 +242,6 @@ heretic_revolt = {
 			usurp_title = {
 				target = attacker
 				type = holy_war
-			}
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -384,7 +366,6 @@ religious_revolt = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -450,14 +431,6 @@ religious_revolt = {
 			usurp_title = {
 				target = attacker
 				type = holy_war
-			}
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
@@ -575,7 +548,7 @@ liberation_revolt = {
 	}
 
 	can_use_title = {
-		tier = KING
+		real_tier = KING
 		has_holder = no
 	}
 
@@ -591,7 +564,6 @@ liberation_revolt = {
 	}
 
 	on_add = {
-		fire_haruspicy_event_effect = yes
 		anger_china_effect = yes
 	}
 
@@ -647,14 +619,6 @@ liberation_revolt = {
 						type = revolt
 					}
 				}
-			}
-		}
-
-		hidden_effect = {
-			check_if_reconquista_finished_effect = yes
-
-			defender = {
-				landless_pope_effect = yes
 			}
 		}
 	}
